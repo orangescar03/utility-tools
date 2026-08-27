@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Utility Tools</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Free, simple online calculators and utility tools.">
+<title>Utility Tools — Free Online Calculators</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--text:#172033;--muted:#667085;--line:#e5e7eb;--blue:#2563eb}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}.wrap{max-width:1120px;width:calc(100% - 32px);margin:auto}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:800}.logo span{color:var(--blue)}nav{display:flex;gap:24px;color:var(--muted);font-size:14px;font-weight:600}
+.hero{text-align:center;padding:72px 0 52px}.tag{display:inline-block;background:#eff6ff;color:var(--blue);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:18px}
+h1{font-size:clamp(38px,6vw,62px);line-height:1.05;letter-spacing:-2.5px;margin:0 auto 18px;max-width:800px}
+.hero p{max-width:650px;margin:0 auto 30px;color:var(--muted);font-size:18px}
+.search{max-width:650px;margin:auto}.search input{width:100%;height:56px;border:1px solid var(--line);border-radius:14px;padding:0 20px;font-size:16px;outline:0;box-shadow:0 8px 30px #1018280c}
+section{padding:20px 0 64px}.head{margin-bottom:20px}.head h2{margin:0;font-size:28px;letter-spacing:-.8px}.head p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.18s}.card:hover{transform:translateY(-3px);box-shadow:0 8px 30px #10182812;border-color:#cbd5e1}
+.icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#eff6ff;color:var(--blue);font-weight:800;margin-bottom:18px}
+.card h3{margin:0 0 7px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px}
+footer{background:#fff;border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.links{display:flex;gap:18px}
+@media(max-width:760px){nav{display:none}.hero{padding:56px 0 42px}h1{letter-spacing:-1.7px}.grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-    <h1>Utility Tools</h1>
-    <p>Our website is coming soon.</p>
-</body>
-</html>
+<header><div class="wrap nav"><a class="logo" href="./">Utility<span>Tools</span></a><nav><a href="#tools">Tools</a><a href="#about">About</a></nav></div></header>
+<main>
+<section class="hero" id="about"><div class="wrap">
+<div class="tag">Free • Simple • No sign-up</div>
+<h1>Useful tools for everyday calculations.</h1>
+<p>Quick, straightforward calculators and utilities that give you the answer without unnecessary steps.</p>
+<div class="search"><input id="search" type="search" placeholder="Search for a tool..." aria-label="Search for a tool"></div>
+</div></section>
+<section id="tools"><div class="wrap"><div class="head"><h2>Popular tools</h2><p>Free tools, with more being added over time.</p></div>
+<div class="grid" id="grid">
+<a class="card" href="./percentage-calculator/"><div class="icon">%</div><h3>Percentage Calculator</h3><p>Calculate percentages, percentage changes, and common percentage problems.</p></a>
+<a class="card" href="./age-calculator/"><div class="icon">AGE</div><h3>Age Calculator</h3><p>Calculate exact age in years, months, and days.</p></a>
+<a class="card" href="./discount-calculator/"><div class="icon">%</div><h3>Discount Calculator</h3><p>Find sale prices, savings, and percentage discounts.</p></a>
+<a class="card" href="./tip-calculator/"><div class="icon">TIP</div><h3>Tip Calculator</h3><p>Calculate tips and split a bill between people.</p></a>
+<a class="card" href="./unit-converter/"><div class="icon">↔</div><h3>Unit Converter</h3><p>Convert common units of length, weight, and temperature.</p></a>
+<a class="card" href="./word-counter/"><div class="icon">Aa</div><h3>Word &amp; Character Counter</h3><p>Count words, characters, sentences, and paragraphs instantly.</p></a>
+<a class="card" href="./case-converter/"><div class="icon">Aa</div><h3>Case Converter</h3><p>Convert text to uppercase, lowercase, title case, and more.</p></a>
+<a class="card" href="./emi-calculator/"><div class="icon">₹</div><h3>EMI Calculator</h3><p>Estimate monthly loan payments and total interest.</p></a>
+<a class="card" href="./gst-calculator/"><div class="icon">GST</div><h3>GST Calculator</h3><p>Calculate GST amounts and prices including or excluding GST.</p></a>
+<a class="card" href="./bmi-calculator/"><div class="icon">BMI</div><h3>BMI Calculator</h3><p>Calculate BMI from height and weight.</p></a>
+</div></div></section>
+</main>
+<footer><div class="wrap foot"><div>© 2026 Utility Tools</div><div class="links"><a href="./about/">About</a><a href="./privacy-policy/">Privacy</a><a href="./terms/">Terms</a><a href="./contact/">Contact</a></div></div></footer>
+<script>
+const input=document.getElementById('search'),cards=[...document.querySelectorAll('.card')];
+input.addEventListener('input',()=>{const q=input.value.toLowerCase().trim();cards.forEach(c=>c.style.display=c.textContent.toLowerCase().includes(q)?'':'none')});
+</script>
+</body></html>
