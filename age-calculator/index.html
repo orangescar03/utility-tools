@@ -1,29 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <meta name="description" content="Free age calculator. Calculate your exact age in years, months and days from your date of birth.">
-<title>Age Calculator – Calculate Your Exact Age</title>
+
+<meta name="google-site-verification" content="QxPjoJB8AlcNWDkujc1nF5abSkH8GgDbswVTqJ_wzo0">
+
+<title>Age Calculator - Calculate Your Exact Age | Utility Tools</title>
 
 <style>
 :root{
   --bg:#f7f9fc;
   --card:#fff;
   --text:#172033;
-  --muted:#60708a;
-  --blue:#2864dc;
-  --blue-light:#edf4ff;
-  --border:#e1e6ef;
+  --muted:#667085;
+  --line:#e5e7eb;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
 }
 
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
+  line-height:1.6;
 }
 
 a{
@@ -31,153 +38,337 @@ a{
   color:inherit;
 }
 
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
+.wrap{
+  width:calc(100% - 24px);
+  max-width:900px;
+  margin:auto;
 }
 
-.wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:0 24px;
+/* HEADER */
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .nav{
-  height:72px;
+  min-height:64px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-  font-size:21px;
+  font-size:19px;
   font-weight:800;
+}
+
+.logo span{
   color:var(--blue);
 }
 
 .back{
   color:var(--muted);
+  font-size:14px;
   font-weight:600;
 }
 
+/* HERO */
+
 .hero{
   text-align:center;
-  padding:65px 20px 35px;
+  padding:48px 0 30px;
 }
 
-.hero h1{
-  font-size:clamp(36px,6vw,58px);
-  margin:0 0 16px;
-  line-height:1.1;
+.tag{
+  display:inline-block;
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+h1{
+  margin:0 auto 12px;
+  font-size:clamp(34px,6vw,52px);
+  line-height:1.08;
+  letter-spacing:-2px;
 }
 
 .hero p{
-  color:var(--muted);
-  font-size:18px;
+  max-width:680px;
   margin:0 auto;
-  max-width:650px;
-  line-height:1.6;
+  color:var(--muted);
+  font-size:17px;
 }
 
+/* CALCULATOR */
+
 .calculator{
-  max-width:650px;
-  margin:25px auto 60px;
   background:var(--card);
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:32px;
-  box-shadow:0 8px 30px rgba(20,40,80,.06);
+  padding:25px;
+  margin:10px auto 45px;
+  box-shadow:0 4px 20px rgba(16,24,40,.04);
 }
 
 label{
   display:block;
+  margin-bottom:7px;
+  font-size:14px;
   font-weight:700;
-  margin-bottom:9px;
 }
 
 input{
   width:100%;
-  padding:15px;
-  border:1px solid #ccd4e0;
+  height:48px;
+  padding:0 14px;
+  margin-bottom:16px;
+  border:1px solid #d0d5dd;
   border-radius:10px;
-  font-size:17px;
-  margin-bottom:20px;
   background:#fff;
+  font-size:16px;
+  outline:none;
 }
 
-button{
+input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+
+.calculate{
   width:100%;
+  height:48px;
   border:0;
   border-radius:10px;
-  padding:15px;
   background:var(--blue);
   color:#fff;
-  font-size:17px;
+  font-size:15px;
   font-weight:700;
   cursor:pointer;
 }
 
-button:hover{
-  opacity:.92;
+.calculate:hover{
+  opacity:.94;
 }
 
 .result{
-  margin-top:20px;
-  padding:22px;
+  margin-top:15px;
+  padding:17px;
+  border-radius:11px;
   background:var(--blue-light);
-  border-radius:12px;
+  color:var(--text);
   text-align:center;
-  color:#174da8;
 }
 
 .result strong{
   display:block;
-  font-size:27px;
-  margin-bottom:7px;
+  font-size:24px;
+  margin-bottom:4px;
 }
 
 .result span{
+  display:block;
   color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
 }
 
-.info{
-  max-width:850px;
-  margin:0 auto 70px;
+/* CONTENT */
+
+.content{
+  padding-bottom:45px;
+}
+
+.content-section{
   background:#fff;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:30px;
+  padding:25px;
+  margin-bottom:16px;
 }
 
-.info h2{
-  margin-top:0;
+.content-section h2{
+  margin:0 0 12px;
+  font-size:24px;
+  letter-spacing:-.5px;
 }
 
-.info p{
+.content-section h3{
+  margin:22px 0 7px;
+  font-size:18px;
+}
+
+.content-section p{
+  margin:0 0 13px;
+  color:#475467;
+}
+
+.formula{
+  padding:14px;
+  margin:14px 0;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#f8fafc;
+  text-align:center;
+  font-weight:700;
+  overflow-wrap:anywhere;
+}
+
+/* EXAMPLES */
+
+.example{
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+
+.example:first-of-type{
+  border-top:0;
+}
+
+.example strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* FAQ */
+
+.faq{
+  border-top:1px solid var(--line);
+}
+
+.faq:first-of-type{
+  border-top:0;
+}
+
+.faq button{
+  width:100%;
+  height:auto;
+  margin:0;
+  padding:16px 0;
+  border:0;
+  border-radius:0;
+  background:none;
+  color:var(--text);
+  text-align:left;
+  font-size:15px;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.faq button span:last-child{
   color:var(--muted);
-  line-height:1.7;
+  font-size:19px;
+  flex-shrink:0;
+  margin-left:15px;
 }
+
+.answer{
+  display:none;
+  padding:0 0 16px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.faq.open .answer{
+  display:block;
+}
+
+/* RELATED */
+
+.related{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.related a{
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:14px;
+  border-radius:11px;
+  text-align:center;
+  font-size:14px;
+  font-weight:700;
+}
+
+.related a:hover{
+  background:#dbeafe;
+}
+
+/* FOOTER */
 
 footer{
   background:#fff;
-  border-top:1px solid var(--border);
-  padding:30px;
-  text-align:center;
+  border-top:1px solid var(--line);
+  padding:28px 0;
   color:var(--muted);
+  font-size:13px;
 }
 
+.foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.links a:hover{
+  color:var(--blue);
+}
+
+/* MOBILE */
+
 @media(max-width:700px){
-  .calculator{
-    margin:20px 15px 45px;
-    padding:22px;
-  }
 
   .hero{
-    padding-top:45px;
+    padding:40px 0 25px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  h1{
+    font-size:36px;
+    letter-spacing:-1.5px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .calculator,
+  .content-section{
+    padding:20px;
+    border-radius:15px;
+  }
+
+  .related{
+    grid-template-columns:1fr;
+  }
+
+  .foot{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .links{
+    gap:12px;
   }
 }
 </style>
@@ -186,94 +377,459 @@ footer{
 <body>
 
 <header>
-  <div class="wrap nav">
-    <a href="../" class="logo">UtilityTools</a>
-    <a href="../" class="back">← All tools</a>
-  </div>
+
+<div class="wrap nav">
+
+  <a href="../" class="logo">
+    Utility<span>Tools</span>
+  </a>
+
+  <a href="../" class="back">
+    ← All tools
+  </a>
+
+</div>
+
 </header>
+
 
 <main>
 
 <section class="hero">
+
+<div class="wrap">
+
+  <div class="tag">
+    Free • Fast • No sign-up
+  </div>
+
   <h1>Age Calculator</h1>
-  <p>Calculate your exact age in years, months and days from your date of birth.</p>
+
+  <p>
+    Calculate your exact age in years, months, and days from your date of birth.
+  </p>
+
+</div>
+
 </section>
+
+
+<section>
+
+<div class="wrap">
 
 <div class="calculator">
 
-  <label for="birthDate">Date of birth</label>
-  <input type="date" id="birthDate">
+  <label for="birthDate">
+    Date of birth
+  </label>
 
-  <button onclick="calculateAge()">Calculate Age</button>
+  <input
+    type="date"
+    id="birthDate"
+  >
+
+
+  <button
+    class="calculate"
+    onclick="calculateAge()">
+    Calculate Age
+  </button>
+
 
   <div class="result" id="result">
+
     <strong>Your age</strong>
-    <span>Enter your date of birth above.</span>
+
+    <span>
+      Enter your date of birth above.
+    </span>
+
   </div>
 
 </div>
 
-<section class="info">
-  <h2>How to calculate your age</h2>
+</div>
+
+</section>
+
+
+<section class="content">
+
+<div class="wrap">
+
+
+<!-- HOW IT WORKS -->
+
+<div class="content-section">
+
+  <h2>How the age calculator works</h2>
+
   <p>
-    Enter your date of birth and the calculator compares it with today's date.
-    It calculates your completed years, months and days while accounting for
-    different month lengths and leap years.
+    Enter your date of birth and the calculator compares it with
+    today's date. It calculates your completed years, months, and
+    days while accounting for different month lengths and leap years.
   </p>
+
+  <h3>Age calculation</h3>
+
+  <p>
+    Your age is calculated by comparing the year, month, and day of
+    your birth date with the current date. If the current day or month
+    has not yet reached your birth day or month, the calculation adjusts
+    the result accordingly.
+  </p>
+
+</div>
+
+
+<!-- EXAMPLES -->
+
+<div class="content-section">
+
+  <h2>Age calculation examples</h2>
+
+  <div class="example">
+
+    <strong>Birthday has already occurred this year</strong>
+
+    <p>
+      If your birthday has passed in the current year, your completed
+      age is the current year minus your birth year, with the remaining
+      months and days calculated from your most recent birthday.
+    </p>
+
+  </div>
+
+
+  <div class="example">
+
+    <strong>Birthday has not occurred yet</strong>
+
+    <p>
+      If your birthday is still ahead in the current year, the calculator
+      adjusts the completed years and calculates the remaining months
+      and days correctly.
+    </p>
+
+  </div>
+
+
+  <div class="example">
+
+    <strong>Leap-year birthdays</strong>
+
+    <p>
+      The calculation takes different month lengths and leap years into
+      account when determining the number of completed days.
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- DATE INFORMATION -->
+
+<div class="content-section">
+
+  <h2>Why exact age can be different from a simple year calculation</h2>
+
+  <p>
+    Subtracting one birth year from the current year does not always
+    give your completed age. Your birthday must also be considered.
+  </p>
+
+  <p>
+    For example, someone born late in the year may still be one year
+    younger in completed years than a simple year-to-year subtraction
+    suggests until their birthday arrives.
+  </p>
+
+</div>
+
+
+<!-- FAQ -->
+
+<div class="content-section">
+
+  <h2>Frequently asked questions</h2>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>How does the age calculator calculate my age?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      The calculator compares your date of birth with today's date
+      and calculates the completed years, months, and days between
+      the two dates.
+    </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>Does the calculator account for leap years?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      Yes. The calculation uses calendar dates and accounts for
+      different month lengths, including leap years.
+    </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>Can I calculate someone's age in the future?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      No. A date of birth in the future is treated as invalid because
+      a person's current age cannot be calculated from a future date.
+    </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>Is the result updated automatically?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      The calculator uses the current date each time you calculate
+      your age, so the result reflects the date on which you use it.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- RELATED -->
+
+<div class="content-section">
+
+  <h2>Related calculators</h2>
+
+  <div class="related">
+
+    <a href="../percentage-calculator/">
+      Percentage Calculator
+    </a>
+
+    <a href="../discount-calculator/">
+      Discount Calculator
+    </a>
+
+    <a href="../unit-converter/">
+      Unit Converter
+    </a>
+
+  </div>
+
+</div>
+
+</div>
+
 </section>
 
 </main>
 
+
 <footer>
-  © 2026 UtilityTools
+
+<div class="wrap foot">
+
+  <div>
+    © 2026 Utility Tools
+  </div>
+
+  <div class="links">
+
+    <a href="../about/">
+      About
+    </a>
+
+    <a href="../privacy-policy/">
+      Privacy
+    </a>
+
+    <a href="../terms/">
+      Terms
+    </a>
+
+    <a href="../contact/">
+      Contact
+    </a>
+
+  </div>
+
+</div>
+
 </footer>
 
+
 <script>
+
 function calculateAge(){
 
-  const input = document.getElementById("birthDate");
-  const result = document.getElementById("result");
+  const input =
+    document.getElementById("birthDate");
+
+  const result =
+    document.getElementById("result");
+
 
   if(!input.value){
+
     result.innerHTML =
-      "<strong>Please enter your date of birth</strong><span>Select a valid date to continue.</span>";
+      "<strong>Please enter your date of birth</strong>" +
+      "<span>Select a valid date to continue.</span>";
+
     return;
   }
 
-  const birth = new Date(input.value + "T00:00:00");
-  const today = new Date();
 
-  if(birth > today){
+  const birth =
+    new Date(input.value + "T00:00:00");
+
+
+  const today =
+    new Date();
+
+
+  today.setHours(0,0,0,0);
+
+
+  if(
+    Number.isNaN(birth.getTime()) ||
+    birth > today
+  ){
+
     result.innerHTML =
-      "<strong>Invalid date</strong><span>Your date of birth cannot be in the future.</span>";
+      "<strong>Invalid date</strong>" +
+      "<span>Your date of birth cannot be in the future.</span>";
+
     return;
   }
 
-  let years = today.getFullYear() - birth.getFullYear();
-  let months = today.getMonth() - birth.getMonth();
-  let days = today.getDate() - birth.getDate();
+
+  let years =
+    today.getFullYear() -
+    birth.getFullYear();
+
+
+  let months =
+    today.getMonth() -
+    birth.getMonth();
+
+
+  let days =
+    today.getDate() -
+    birth.getDate();
+
 
   if(days < 0){
+
     months--;
 
-    const previousMonth = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      0
-    );
+    const previousMonth =
+      new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        0
+      );
 
-    days += previousMonth.getDate();
+    days +=
+      previousMonth.getDate();
+
   }
+
 
   if(months < 0){
+
     years--;
+
     months += 12;
+
   }
 
+
   result.innerHTML =
-    "<strong>" + years + " years, " + months + " months, " + days + " days</strong>" +
-    "<span>That is your current age.</span>";
+    "<strong>" +
+    years +
+    " years, " +
+    months +
+    " months, " +
+    days +
+    " days" +
+    "</strong>" +
+
+    "<span>" +
+    "That is your current age." +
+    "</span>";
+
 }
+
+
+function toggleFaq(button){
+
+  const faq =
+    button.parentElement;
+
+  const isOpen =
+    faq.classList.contains("open");
+
+
+  document
+    .querySelectorAll(".faq")
+    .forEach(item => {
+
+      item.classList.remove("open");
+
+      const symbol =
+        item.querySelector(
+          "button span:last-child"
+        );
+
+      if(symbol){
+        symbol.textContent = "+";
+      }
+
+    });
+
+
+  if(!isOpen){
+
+    faq.classList.add("open");
+
+    const symbol =
+      button.querySelector(
+        "span:last-child"
+      );
+
+    if(symbol){
+      symbol.textContent = "−";
+    }
+
+  }
+
+}
+
 </script>
 
 </body>
