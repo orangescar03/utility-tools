@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Free word and character counter. Count words, characters, sentences and paragraphs instantly.">
+<meta name="description" content="Free word and character counter. Count words, characters, sentences, paragraphs and estimate reading time instantly.">
 
-<title>Word & Character Counter – Free Online Tool</title>
+<title>Word Counter – Count Words, Characters & More</title>
 
 <style>
 :root{
@@ -28,7 +28,10 @@ body{
   color:var(--text);
 }
 
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 header{
   background:#fff;
@@ -74,12 +77,12 @@ header{
   color:var(--muted);
   font-size:18px;
   margin:0 auto;
-  max-width:700px;
+  max-width:720px;
   line-height:1.6;
 }
 
 .calculator{
-  max-width:800px;
+  max-width:850px;
   margin:25px auto 60px;
   background:var(--card);
   border:1px solid var(--border);
@@ -108,7 +111,7 @@ textarea:focus{
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:12px;
   margin-top:18px;
 }
@@ -124,6 +127,7 @@ textarea:focus{
   display:block;
   font-size:25px;
   color:#174da8;
+  margin-bottom:4px;
 }
 
 .stat span{
@@ -144,9 +148,13 @@ textarea:focus{
   cursor:pointer;
 }
 
+.clear:hover{
+  opacity:.92;
+}
+
 .info{
   max-width:850px;
-  margin:0 auto 70px;
+  margin:0 auto 30px;
   background:#fff;
   border:1px solid var(--border);
   border-radius:18px;
@@ -157,9 +165,48 @@ textarea:focus{
   margin-top:0;
 }
 
+.info h3{
+  margin-top:28px;
+  margin-bottom:8px;
+}
+
 .info p{
   color:var(--muted);
   line-height:1.7;
+}
+
+.faq{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.faq h2{
+  margin-top:0;
+}
+
+.faq details{
+  border-bottom:1px solid var(--border);
+  padding:18px 0;
+}
+
+.faq details:last-child{
+  border-bottom:0;
+}
+
+.faq summary{
+  cursor:pointer;
+  font-weight:700;
+  line-height:1.5;
+}
+
+.faq p{
+  color:var(--muted);
+  line-height:1.7;
+  margin:12px 0 0;
 }
 
 footer{
@@ -171,6 +218,7 @@ footer{
 }
 
 @media(max-width:700px){
+
   .calculator{
     margin:20px 15px 45px;
     padding:22px;
@@ -180,12 +228,18 @@ footer{
     padding-top:45px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  .info,
+  .faq{
+    margin-left:15px;
+    margin-right:15px;
   }
 
   .stats{
     grid-template-columns:repeat(2,1fr);
+  }
+
+  .stat:last-child{
+    grid-column:1 / -1;
   }
 }
 </style>
@@ -203,8 +257,8 @@ footer{
 <main>
 
 <section class="hero">
-  <h1>Word & Character Counter</h1>
-  <p>Count words, characters, sentences and paragraphs instantly.</p>
+  <h1>Word Counter</h1>
+  <p>Count words, characters, sentences, paragraphs and estimated reading time instantly.</p>
 </section>
 
 <div class="calculator">
@@ -237,9 +291,16 @@ footer{
       <span>Paragraphs</span>
     </div>
 
+    <div class="stat">
+      <strong id="readingTime">0 min</strong>
+      <span>Reading time</span>
+    </div>
+
   </div>
 
-  <button class="clear" onclick="clearText()">Clear Text</button>
+  <button class="clear" onclick="clearText()" type="button">
+    Clear Text
+  </button>
 
 </div>
 
@@ -248,10 +309,100 @@ footer{
   <h2>How the word counter works</h2>
 
   <p>
-    Type or paste text into the box above and the counter automatically
+    Type or paste your text into the box above. The counter automatically
     calculates the number of words, characters, sentences and paragraphs.
-    Spaces are included in the character count.
+    It also provides an estimated reading time based on the word count.
   </p>
+
+  <h3>What counts as a word?</h3>
+
+  <p>
+    Words are counted by separating text wherever one or more spaces,
+    line breaks or other whitespace characters occur. This makes the
+    counter suitable for articles, essays, emails, assignments and other
+    everyday writing.
+  </p>
+
+  <h3>What does the character count include?</h3>
+
+  <p>
+    The character count includes letters, numbers, punctuation, spaces and
+    line breaks contained in the text.
+  </p>
+
+  <h3>How is reading time estimated?</h3>
+
+  <p>
+    Reading time is an estimate based on approximately 200 words per minute.
+    Actual reading speed varies depending on the reader and the complexity
+    of the text.
+  </p>
+
+</section>
+
+<section class="faq">
+
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>How do I count the words in a document?</summary>
+    <p>
+      Copy and paste your text into the counter. The word count updates
+      automatically as soon as the text is entered.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does the word counter count characters too?</summary>
+    <p>
+      Yes. It displays both the total number of characters and the number
+      of words. Spaces and line breaks are included in the character count.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does the character count include spaces?</summary>
+    <p>
+      Yes. Every character in the text area is included, including spaces,
+      punctuation and line breaks.
+    </p>
+  </details>
+
+  <details>
+    <summary>How accurate is the sentence count?</summary>
+    <p>
+      The calculator identifies common sentence endings such as periods,
+      question marks and exclamation marks. It is designed for practical
+      everyday text and may not perfectly interpret unusual punctuation
+      or abbreviations.
+    </p>
+  </details>
+
+  <details>
+    <summary>How is reading time calculated?</summary>
+    <p>
+      Reading time is estimated using approximately 200 words per minute.
+      The result is rounded up to the nearest whole minute for text that
+      contains words.
+    </p>
+  </details>
+
+  <details>
+    <summary>Can I use this for essays and assignments?</summary>
+    <p>
+      Yes. You can use it to quickly check word and character counts for
+      essays, assignments, articles, applications, emails and other writing.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does the text I enter get uploaded anywhere?</summary>
+    <p>
+      The counter performs its calculations directly in your browser.
+      The page does not need to send your text to a server to calculate
+      the displayed statistics.
+    </p>
+  </details>
 
 </section>
 
@@ -270,7 +421,6 @@ textBox.addEventListener("input", updateCounts);
 function updateCounts(){
 
   const text = textBox.value;
-
   const trimmed = text.trim();
 
   const words = trimmed
@@ -287,10 +437,16 @@ function updateCounts(){
     ? trimmed.split(/\n\s*\n/).filter(p => p.trim()).length
     : 0;
 
+  const readingTime = words
+    ? Math.ceil(words / 200)
+    : 0;
+
   document.getElementById("words").textContent = words;
   document.getElementById("characters").textContent = characters;
   document.getElementById("sentences").textContent = sentences;
   document.getElementById("paragraphs").textContent = paragraphs;
+  document.getElementById("readingTime").textContent =
+    readingTime + " min";
 }
 
 function clearText(){
