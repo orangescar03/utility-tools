@@ -1,184 +1,374 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="description" content="Free EMI calculator. Calculate monthly loan payments, total interest and total repayment quickly.">
+<meta name="description" content="Free EMI calculator. Calculate monthly loan payments, total interest, and total repayment from your loan amount, interest rate, and loan term.">
 
-<title>EMI Calculator – Calculate Monthly Loan Payments</title>
+<meta name="google-site-verification" content="QxPjoJB8AlcNWDkujc1nF5abSkH8GgDbswVTqJ_wzo0">
+
+<title>EMI Calculator - Calculate Monthly Loan Payments | Utility Tools</title>
 
 <style>
 :root{
   --bg:#f7f9fc;
   --card:#fff;
   --text:#172033;
-  --muted:#60708a;
-  --blue:#2864dc;
-  --blue-light:#edf4ff;
-  --border:#e1e6ef;
+  --muted:#667085;
+  --line:#e5e7eb;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
 }
 
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
+  line-height:1.6;
 }
 
-a{text-decoration:none;color:inherit}
-
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
+a{
+  text-decoration:none;
+  color:inherit;
 }
 
 .wrap{
-  max-width:1200px;
+  width:calc(100% - 24px);
+  max-width:900px;
   margin:auto;
-  padding:0 24px;
+}
+
+/* HEADER */
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .nav{
-  height:72px;
+  min-height:64px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-  font-size:21px;
+  font-size:19px;
   font-weight:800;
+}
+
+.logo span{
   color:var(--blue);
 }
 
 .back{
   color:var(--muted);
+  font-size:14px;
   font-weight:600;
 }
 
+/* HERO */
+
 .hero{
   text-align:center;
-  padding:65px 20px 35px;
+  padding:48px 0 30px;
 }
 
-.hero h1{
-  font-size:clamp(36px,6vw,58px);
-  margin:0 0 16px;
-  line-height:1.1;
+.tag{
+  display:inline-block;
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+h1{
+  margin:0 auto 12px;
+  font-size:clamp(34px,6vw,52px);
+  line-height:1.08;
+  letter-spacing:-2px;
 }
 
 .hero p{
-  color:var(--muted);
-  font-size:18px;
+  max-width:680px;
   margin:0 auto;
-  max-width:700px;
-  line-height:1.6;
+  color:var(--muted);
+  font-size:17px;
 }
 
+/* CALCULATOR */
+
 .calculator{
-  max-width:650px;
-  margin:25px auto 60px;
   background:var(--card);
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:32px;
-  box-shadow:0 8px 30px rgba(20,40,80,.06);
+  padding:25px;
+  margin:10px auto 45px;
+  box-shadow:0 4px 20px rgba(16,24,40,.04);
 }
 
 label{
   display:block;
+  margin-bottom:7px;
+  font-size:14px;
   font-weight:700;
-  margin-bottom:9px;
 }
 
 input{
   width:100%;
-  padding:15px;
-  border:1px solid #ccd4e0;
+  height:48px;
+  padding:0 14px;
+  margin-bottom:16px;
+  border:1px solid #d0d5dd;
   border-radius:10px;
-  font-size:17px;
-  margin-bottom:20px;
   background:#fff;
+  font-size:16px;
+  outline:none;
 }
 
-button{
+input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+
+.calculate{
   width:100%;
+  height:48px;
   border:0;
   border-radius:10px;
-  padding:15px;
   background:var(--blue);
   color:#fff;
-  font-size:17px;
+  font-size:15px;
   font-weight:700;
   cursor:pointer;
 }
 
-button:hover{
-  opacity:.92;
+.calculate:hover{
+  opacity:.94;
 }
 
 .result{
-  margin-top:20px;
-  padding:22px;
+  margin-top:15px;
+  padding:17px;
+  border-radius:11px;
   background:var(--blue-light);
-  border-radius:12px;
+  color:var(--text);
   text-align:center;
-  color:#174da8;
 }
 
 .result strong{
   display:block;
-  font-size:30px;
-  margin-bottom:12px;
+  font-size:25px;
+  margin-bottom:4px;
 }
 
 .result span{
   display:block;
   color:var(--muted);
-  line-height:1.7;
+  font-size:14px;
+  line-height:1.8;
 }
 
-.info{
-  max-width:850px;
-  margin:0 auto 70px;
+/* CONTENT */
+
+.content{
+  padding-bottom:45px;
+}
+
+.content-section{
   background:#fff;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:30px;
+  padding:25px;
+  margin-bottom:16px;
 }
 
-.info h2{
-  margin-top:0;
+.content-section h2{
+  margin:0 0 12px;
+  font-size:24px;
+  letter-spacing:-.5px;
 }
 
-.info p{
+.content-section h3{
+  margin:22px 0 7px;
+  font-size:18px;
+}
+
+.content-section p{
+  margin:0 0 13px;
+  color:#475467;
+}
+
+.formula{
+  padding:14px;
+  margin:14px 0;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#f8fafc;
+  text-align:center;
+  font-weight:700;
+  overflow-wrap:anywhere;
+}
+
+/* EXAMPLES */
+
+.example{
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+
+.example:first-of-type{
+  border-top:0;
+}
+
+.example strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* FAQ */
+
+.faq{
+  border-top:1px solid var(--line);
+}
+
+.faq:first-of-type{
+  border-top:0;
+}
+
+.faq button{
+  width:100%;
+  height:auto;
+  margin:0;
+  padding:16px 0;
+  border:0;
+  border-radius:0;
+  background:none;
+  color:var(--text);
+  text-align:left;
+  font-size:15px;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.faq button span:last-child{
   color:var(--muted);
-  line-height:1.7;
+  font-size:19px;
+  flex-shrink:0;
+  margin-left:15px;
 }
+
+.answer{
+  display:none;
+  padding:0 0 16px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.faq.open .answer{
+  display:block;
+}
+
+/* RELATED */
+
+.related{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.related a{
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:14px;
+  border-radius:11px;
+  text-align:center;
+  font-size:14px;
+  font-weight:700;
+}
+
+.related a:hover{
+  background:#dbeafe;
+}
+
+/* FOOTER */
 
 footer{
   background:#fff;
-  border-top:1px solid var(--border);
-  padding:30px;
-  text-align:center;
+  border-top:1px solid var(--line);
+  padding:28px 0;
   color:var(--muted);
+  font-size:13px;
 }
 
+.foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.links a:hover{
+  color:var(--blue);
+}
+
+/* MOBILE */
+
 @media(max-width:700px){
-  .calculator{
-    margin:20px 15px 45px;
-    padding:22px;
-  }
 
   .hero{
-    padding-top:45px;
+    padding:40px 0 25px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  h1{
+    font-size:36px;
+    letter-spacing:-1.5px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .calculator,
+  .content-section{
+    padding:20px;
+    border-radius:15px;
+  }
+
+  .related{
+    grid-template-columns:1fr;
+  }
+
+  .foot{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .links{
+    gap:12px;
   }
 }
 </style>
@@ -187,139 +377,448 @@ footer{
 <body>
 
 <header>
+
   <div class="wrap nav">
-    <a href="../" class="logo">UtilityTools</a>
-    <a href="../" class="back">← All tools</a>
+
+    <a href="../" class="logo">
+      Utility<span>Tools</span>
+    </a>
+
+    <a href="../" class="back">
+      ← All tools
+    </a>
+
   </div>
+
 </header>
+
 
 <main>
 
 <section class="hero">
-  <h1>EMI Calculator</h1>
-  <p>Calculate your monthly loan payment, total interest and total repayment.</p>
+
+  <div class="wrap">
+
+    <div class="tag">
+      Free • Fast • No sign-up
+    </div>
+
+    <h1>EMI Calculator</h1>
+
+    <p>
+      Calculate your monthly loan payment, total interest, and total repayment.
+    </p>
+
+  </div>
+
 </section>
 
-<div class="calculator">
 
-  <label for="loanAmount">Loan amount</label>
-  <input
-    type="number"
-    id="loanAmount"
-    placeholder="e.g. 500000"
-    min="0"
-    step="any"
-  >
+<section>
 
-  <label for="interestRate">Annual interest rate (%)</label>
-  <input
-    type="number"
-    id="interestRate"
-    placeholder="e.g. 8.5"
-    min="0"
-    step="any"
-  >
+<div class="wrap">
 
-  <label for="loanTerm">Loan term (years)</label>
-  <input
-    type="number"
-    id="loanTerm"
-    placeholder="e.g. 5"
-    min="0.01"
-    step="any"
-  >
+  <div class="calculator">
 
-  <button onclick="calculateEMI()">Calculate EMI</button>
+    <label for="loanAmount">
+      Loan amount
+    </label>
 
-  <div class="result" id="result">
-    <strong>Your EMI</strong>
-    <span>Enter your loan details above.</span>
+    <input
+      type="number"
+      id="loanAmount"
+      placeholder="e.g. 500000"
+      min="0"
+      step="any"
+      inputmode="decimal"
+    >
+
+
+    <label for="interestRate">
+      Annual interest rate (%)
+    </label>
+
+    <input
+      type="number"
+      id="interestRate"
+      placeholder="e.g. 8.5"
+      min="0"
+      step="any"
+      inputmode="decimal"
+    >
+
+
+    <label for="loanTerm">
+      Loan term (years)
+    </label>
+
+    <input
+      type="number"
+      id="loanTerm"
+      placeholder="e.g. 5"
+      min="0.01"
+      step="any"
+      inputmode="decimal"
+    >
+
+
+    <button
+      class="calculate"
+      onclick="calculateEMI()">
+      Calculate EMI
+    </button>
+
+
+    <div class="result" id="result">
+
+      <strong>Your EMI</strong>
+
+      <span>
+        Enter your loan details above.
+      </span>
+
+    </div>
+
   </div>
 
 </div>
 
-<section class="info">
+</section>
 
-  <h2>How EMI is calculated</h2>
 
-  <p>
-    EMI stands for Equated Monthly Instalment. It is the fixed monthly amount
-    paid toward a loan when using a standard amortizing loan calculation.
-  </p>
+<section class="content">
 
-  <p>
-    The calculation uses the loan amount, monthly interest rate and number of
-    monthly payments. The results are estimates and actual loan payments may
-    differ depending on lender fees, taxes, insurance or other charges.
-  </p>
+<div class="wrap">
+
+
+  <!-- HOW IT WORKS -->
+
+  <div class="content-section">
+
+    <h2>How EMI is calculated</h2>
+
+    <p>
+      EMI stands for Equated Monthly Instalment. It is the regular
+      monthly payment made toward a loan under a standard amortizing
+      loan calculation.
+    </p>
+
+    <p>
+      The EMI depends on the loan principal, annual interest rate,
+      and number of monthly payments.
+    </p>
+
+    <div class="formula">
+      EMI = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)
+    </div>
+
+    <p>
+      In this formula, <strong>P</strong> is the loan amount,
+      <strong>r</strong> is the monthly interest rate, and
+      <strong>n</strong> is the total number of monthly payments.
+    </p>
+
+    <h3>Monthly interest rate</h3>
+
+    <div class="formula">
+      Monthly Rate = Annual Rate ÷ 12 ÷ 100
+    </div>
+
+    <h3>Total repayment</h3>
+
+    <div class="formula">
+      Total Repayment = EMI × Number of Payments
+    </div>
+
+    <h3>Total interest</h3>
+
+    <div class="formula">
+      Total Interest = Total Repayment − Loan Amount
+    </div>
+
+  </div>
+
+
+  <!-- EXAMPLES -->
+
+  <div class="content-section">
+
+    <h2>EMI examples</h2>
+
+    <div class="example">
+
+      <strong>₹5,00,000 loan at 8.5% for 5 years</strong>
+
+      <p>
+        The calculator estimates the monthly EMI, total interest,
+        and total amount repaid over the five-year term.
+      </p>
+
+    </div>
+
+    <div class="example">
+
+      <strong>₹10,00,000 loan at 8% for 10 years</strong>
+
+      <p>
+        A longer loan term generally results in a lower monthly EMI,
+        but the total interest paid can be higher.
+      </p>
+
+    </div>
+
+    <div class="example">
+
+      <strong>Interest-free loan</strong>
+
+      <p>
+        When the interest rate is 0%, the monthly payment is simply
+        the loan amount divided by the number of monthly payments.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- IMPORTANT NOTE -->
+
+  <div class="content-section">
+
+    <h2>What this EMI calculator does not include</h2>
+
+    <p>
+      This calculator estimates payments using the loan amount,
+      interest rate, and loan term. Actual loan costs can differ
+      because lenders may apply processing fees, insurance, taxes,
+      penalties, variable rates, or other charges.
+    </p>
+
+    <p>
+      For a real loan, use the lender's repayment schedule and terms
+      as the final source for the amount payable.
+    </p>
+
+  </div>
+
+
+  <!-- FAQ -->
+
+  <div class="content-section">
+
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq">
+
+      <button onclick="toggleFaq(this)">
+        <span>What does EMI stand for?</span>
+        <span>+</span>
+      </button>
+
+      <div class="answer">
+        EMI stands for Equated Monthly Instalment. It is the regular
+        payment made toward a loan under an amortizing repayment schedule.
+      </div>
+
+    </div>
+
+
+    <div class="faq">
+
+      <button onclick="toggleFaq(this)">
+        <span>How is monthly EMI calculated?</span>
+        <span>+</span>
+      </button>
+
+      <div class="answer">
+        EMI is calculated using the loan amount, monthly interest rate,
+        and total number of monthly payments.
+      </div>
+
+    </div>
+
+
+    <div class="faq">
+
+      <button onclick="toggleFaq(this)">
+        <span>Does a longer loan term reduce EMI?</span>
+        <span>+</span>
+      </button>
+
+      <div class="answer">
+        Generally, increasing the loan term reduces the monthly EMI,
+        but it can increase the total interest paid over the life of
+        the loan.
+      </div>
+
+    </div>
+
+
+    <div class="faq">
+
+      <button onclick="toggleFaq(this)">
+        <span>What happens when the interest rate is 0%?</span>
+        <span>+</span>
+      </button>
+
+      <div class="answer">
+        With a zero interest rate, the loan amount is divided equally
+        across the total number of monthly payments.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- RELATED -->
+
+  <div class="content-section">
+
+    <h2>Related calculators</h2>
+
+    <div class="related">
+
+      <a href="../sip-calculator/">
+        SIP Calculator
+      </a>
+
+      <a href="../compound-interest/">
+        Compound Interest
+      </a>
+
+      <a href="../percentage-calculator/">
+        Percentage Calculator
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
 
 </section>
 
 </main>
 
+
 <footer>
-  © 2026 UtilityTools
+
+<div class="wrap foot">
+
+  <div>
+    © 2026 Utility Tools
+  </div>
+
+  <div class="links">
+    <a href="../about/">About</a>
+    <a href="../privacy-policy/">Privacy</a>
+    <a href="../terms/">Terms</a>
+    <a href="../contact/">Contact</a>
+  </div>
+
+</div>
+
 </footer>
+
 
 <script>
 
 function calculateEMI(){
 
-  const principal = parseFloat(
-    document.getElementById("loanAmount").value
-  );
+  const principal =
+    parseFloat(
+      document.getElementById("loanAmount").value
+    );
 
-  const annualRate = parseFloat(
-    document.getElementById("interestRate").value
-  );
+  const annualRate =
+    parseFloat(
+      document.getElementById("interestRate").value
+    );
 
-  const years = parseFloat(
-    document.getElementById("loanTerm").value
-  );
+  const years =
+    parseFloat(
+      document.getElementById("loanTerm").value
+    );
 
-  const result = document.getElementById("result");
+  const result =
+    document.getElementById("result");
+
 
   if(
-    isNaN(principal) ||
-    isNaN(annualRate) ||
-    isNaN(years) ||
+    !Number.isFinite(principal) ||
+    !Number.isFinite(annualRate) ||
+    !Number.isFinite(years) ||
     principal <= 0 ||
     annualRate < 0 ||
     years <= 0
   ){
+
     result.innerHTML =
       "<strong>Enter valid values</strong>" +
-      "<span>Enter a valid loan amount, interest rate and loan term.</span>";
+      "<span>Enter a valid loan amount, interest rate, and loan term.</span>";
+
     return;
   }
 
-  const monthlyRate = annualRate / 100 / 12;
-  const numberOfPayments = years * 12;
+
+  const monthlyRate =
+    annualRate / 100 / 12;
+
+  const numberOfPayments =
+    years * 12;
+
 
   let emi;
 
+
   if(monthlyRate === 0){
 
-    emi = principal / numberOfPayments;
+    emi =
+      principal / numberOfPayments;
 
   }else{
+
+    const factor =
+      Math.pow(
+        1 + monthlyRate,
+        numberOfPayments
+      );
 
     emi =
       principal *
       monthlyRate *
-      Math.pow(1 + monthlyRate, numberOfPayments) /
-      (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+      factor /
+      (factor - 1);
 
   }
 
-  const totalPayment = emi * numberOfPayments;
-  const totalInterest = totalPayment - principal;
+
+  const totalPayment =
+    emi * numberOfPayments;
+
+  const totalInterest =
+    totalPayment - principal;
+
 
   result.innerHTML =
-    "<strong>Monthly EMI: " + formatCurrency(emi) + "</strong>" +
-    "<span>Total interest: " + formatCurrency(totalInterest) +
-    "<br>Total repayment: " + formatCurrency(totalPayment) + "</span>";
+    "<strong>Monthly EMI: " +
+    formatCurrency(emi) +
+    "</strong>" +
+
+    "<span>" +
+
+    "Total interest: " +
+    formatCurrency(totalInterest) +
+
+    "<br>" +
+
+    "Total repayment: " +
+    formatCurrency(totalPayment) +
+
+    "</span>";
 }
+
 
 function formatCurrency(number){
 
@@ -328,6 +827,47 @@ function formatCurrency(number){
     currency:"INR",
     maximumFractionDigits:2
   });
+
+}
+
+
+function toggleFaq(button){
+
+  const faq =
+    button.parentElement;
+
+  const isOpen =
+    faq.classList.contains("open");
+
+
+  document
+    .querySelectorAll(".faq")
+    .forEach(item => {
+
+      item.classList.remove("open");
+
+      const symbol =
+        item.querySelector("button span:last-child");
+
+      if(symbol){
+        symbol.textContent = "+";
+      }
+
+    });
+
+
+  if(!isOpen){
+
+    faq.classList.add("open");
+
+    const symbol =
+      button.querySelector("span:last-child");
+
+    if(symbol){
+      symbol.textContent = "−";
+    }
+
+  }
 
 }
 
