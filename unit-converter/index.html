@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Free unit converter. Convert length, weight and temperature units quickly and easily.">
+
+<title>Unit Converter – Length, Weight & Temperature</title>
+
+<style>
+:root{
+  --bg:#f7f9fc;
+  --card:#fff;
+  --text:#172033;
+  --muted:#60708a;
+  --blue:#2864dc;
+  --blue-light:#edf4ff;
+  --border:#e1e6ef;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{text-decoration:none;color:inherit}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+}
+
+.nav{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.back{
+  color:var(--muted);
+  font-weight:600;
+}
+
+.hero{
+  text-align:center;
+  padding:65px 20px 35px;
+}
+
+.hero h1{
+  font-size:clamp(36px,6vw,58px);
+  margin:0 0 16px;
+  line-height:1.1;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  margin:0 auto;
+  max-width:700px;
+  line-height:1.6;
+}
+
+.calculator{
+  max-width:700px;
+  margin:25px auto 60px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 8px 30px rgba(20,40,80,.06);
+}
+
+.category-buttons{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:25px;
+}
+
+.category-buttons button{
+  background:#fff;
+  color:var(--blue);
+  border:1px solid var(--border);
+}
+
+.category-buttons button.active{
+  background:var(--blue);
+  color:#fff;
+  border-color:var(--blue);
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-bottom:9px;
+}
+
+input,select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ccd4e0;
+  border-radius:10px;
+  font-size:17px;
+  margin-bottom:20px;
+  background:#fff;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:15px;
+  background:var(--blue);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.92;
+}
+
+.result{
+  margin-top:20px;
+  padding:22px;
+  background:var(--blue-light);
+  border-radius:12px;
+  text-align:center;
+  color:#174da8;
+}
+
+.result strong{
+  display:block;
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.result span{
+  color:var(--muted);
+}
+
+.info{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.info h2{
+  margin-top:0;
+}
+
+.info p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+footer{
+  background:#fff;
+  border-top:1px solid var(--border);
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+@media(max-width:700px){
+
+  .calculator{
+    margin:20px 15px 45px;
+    padding:22px;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+
+  .info{
+    margin:0 15px 45px;
+  }
+
+  .category-buttons{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="../" class="logo">UtilityTools</a>
+    <a href="../" class="back">← All tools</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <h1>Unit Converter</h1>
+  <p>Convert common length, weight and temperature units quickly and easily.</p>
+</section>
+
+<div class="calculator">
+
+  <div class="category-buttons">
+
+    <button id="lengthBtn" class="active" onclick="setCategory('length')">
+      Length
+    </button>
+
+    <button id="weightBtn" onclick="setCategory('weight')">
+      Weight
+    </button>
+
+    <button id="temperatureBtn" onclick="setCategory('temperature')">
+      Temperature
+    </button>
+
+  </div>
+
+  <label for="value">Value</label>
+
+  <input
+    type="number"
+    id="value"
+    placeholder="Enter a value"
+    step="any"
+  >
+
+  <label for="fromUnit">From</label>
+
+  <select id="fromUnit"></select>
+
+  <label for="toUnit">To</label>
+
+  <select id="toUnit"></select>
+
+  <button onclick="convert()">Convert</button>
+
+  <div class="result" id="result">
+    <strong>Your result</strong>
+    <span>Enter a value and choose your units.</span>
+  </div>
+
+</div>
+
+<section class="info">
+
+  <h2>How the unit converter works</h2>
+
+  <p>
+    Choose a category, enter a value and select the units you want to convert
+    between. The calculator supports common length, weight and temperature
+    conversions directly in your browser.
+  </p>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 UtilityTools
+</footer>
+
+<script>
+
+const units = {
+
+  length: {
+    "Meters": 1,
+    "Kilometers": 1000,
+    "Centimeters": 0.01,
+    "Millimeters": 0.001,
+    "Miles": 1609.344,
+    "Yards": 0.9144,
+    "Feet": 0.3048,
+    "Inches": 0.0254
+  },
+
+  weight: {
+    "Kilograms": 1,
+    "Grams": 0.001,
+    "Milligrams": 0.000001,
+    "Pounds": 0.45359237,
+    "Ounces": 0.028349523125
+  },
+
+  temperature: {
+    "Celsius": "C",
+    "Fahrenheit": "F",
+    "Kelvin": "K"
+  }
+
+};
+
+let category = "length";
+
+function setCategory(selected){
+
+  category = selected;
+
+  document.getElementById("lengthBtn").classList.remove("active");
+  document.getElementById("weightBtn").classList.remove("active");
+  document.getElementById("temperatureBtn").classList.remove("active");
+
+  document.getElementById(selected + "Btn").classList.add("active");
+
+  populateUnits();
+
+  document.getElementById("result").innerHTML =
+    "<strong>Your result</strong>" +
+    "<span>Enter a value and choose your units.</span>";
+}
+
+function populateUnits(){
+
+  const from = document.getElementById("fromUnit");
+  const to = document.getElementById("toUnit");
+
+  from.innerHTML = "";
+  to.innerHTML = "";
+
+  Object.keys(units[category]).forEach(unit => {
+
+    const option1 = document.createElement("option");
+    option1.value = unit;
+    option1.textContent = unit;
+
+    const option2 = document.createElement("option");
+    option2.value = unit;
+    option2.textContent = unit;
+
+    from.appendChild(option1);
+    to.appendChild(option2);
+
+  });
+
+  if(category === "length"){
+    to.value = "Kilometers";
+  }
+
+  if(category === "weight"){
+    to.value = "Pounds";
+  }
+
+  if(category === "temperature"){
+    to.value = "Fahrenheit";
+  }
+}
+
+function convert(){
+
+  const value = parseFloat(
+    document.getElementById("value").value
+  );
+
+  const from = document.getElementById("fromUnit").value;
+  const to = document.getElementById("toUnit").value;
+
+  const result = document.getElementById("result");
+
+  if(isNaN(value)){
+
+    result.innerHTML =
+      "<strong>Enter a valid value</strong>" +
+      "<span>Please enter a number to convert.</span>";
+
+    return;
+  }
+
+  let converted;
+
+  if(category === "temperature"){
+
+    converted = convertTemperature(value,from,to);
+
+  }else{
+
+    const baseValue = value * units[category][from];
+
+    converted = baseValue / units[category][to];
+
+  }
+
+  result.innerHTML =
+    "<strong>" + formatNumber(converted) + " " + to + "</strong>" +
+    "<span>" + value + " " + from + " = " +
+    formatNumber(converted) + " " + to + "</span>";
+}
+
+function convertTemperature(value,from,to){
+
+  if(from === to){
+    return value;
+  }
+
+  let celsius;
+
+  if(from === "Celsius"){
+    celsius = value;
+  }else if(from === "Fahrenheit"){
+    celsius = (value - 32) * 5 / 9;
+  }else{
+    celsius = value - 273.15;
+  }
+
+  if(to === "Celsius"){
+    return celsius;
+  }
+
+  if(to === "Fahrenheit"){
+    return (celsius * 9 / 5) + 32;
+  }
+
+  return celsius + 273.15;
+}
+
+function formatNumber(number){
+
+  return number.toLocaleString(undefined,{
+    maximumFractionDigits:8
+  });
+
+}
+
+populateUnits();
+
+</script>
+
+</body>
+</html>
