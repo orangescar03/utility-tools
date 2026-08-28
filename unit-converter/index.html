@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Free unit converter. Convert length, weight and temperature units quickly and easily.">
+<meta name="description" content="Free unit converter for length, weight and temperature. Convert meters, kilometers, miles, feet, kilograms, pounds, Celsius, Fahrenheit and more.">
 
 <title>Unit Converter – Length, Weight & Temperature</title>
 
@@ -28,7 +28,10 @@ body{
   color:var(--text);
 }
 
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 header{
   background:#fff;
@@ -74,7 +77,7 @@ header{
   color:var(--muted);
   font-size:18px;
   margin:0 auto;
-  max-width:700px;
+  max-width:720px;
   line-height:1.6;
 }
 
@@ -113,7 +116,8 @@ label{
   margin-bottom:9px;
 }
 
-input,select{
+input,
+select{
   width:100%;
   padding:15px;
   border:1px solid #ccd4e0;
@@ -121,6 +125,12 @@ input,select{
   font-size:17px;
   margin-bottom:20px;
   background:#fff;
+}
+
+input:focus,
+select:focus{
+  outline:2px solid #b9d0ff;
+  outline-offset:1px;
 }
 
 button{
@@ -151,16 +161,19 @@ button:hover{
 .result strong{
   display:block;
   font-size:28px;
-  margin-bottom:7px;
+  margin-bottom:8px;
+  line-height:1.4;
 }
 
 .result span{
+  display:block;
   color:var(--muted);
+  line-height:1.7;
 }
 
 .info{
   max-width:850px;
-  margin:0 auto 70px;
+  margin:0 auto 30px;
   background:#fff;
   border:1px solid var(--border);
   border-radius:18px;
@@ -171,9 +184,48 @@ button:hover{
   margin-top:0;
 }
 
+.info h3{
+  margin-top:28px;
+  margin-bottom:8px;
+}
+
 .info p{
   color:var(--muted);
   line-height:1.7;
+}
+
+.faq{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.faq h2{
+  margin-top:0;
+}
+
+.faq details{
+  border-bottom:1px solid var(--border);
+  padding:18px 0;
+}
+
+.faq details:last-child{
+  border-bottom:0;
+}
+
+.faq summary{
+  cursor:pointer;
+  font-weight:700;
+  line-height:1.5;
+}
+
+.faq p{
+  color:var(--muted);
+  line-height:1.7;
+  margin:12px 0 0;
 }
 
 footer{
@@ -195,8 +247,10 @@ footer{
     padding-top:45px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  .info,
+  .faq{
+    margin-left:15px;
+    margin-right:15px;
   }
 
   .category-buttons{
@@ -226,15 +280,28 @@ footer{
 
   <div class="category-buttons">
 
-    <button id="lengthBtn" class="active" onclick="setCategory('length')">
+    <button
+      id="lengthBtn"
+      class="active"
+      onclick="setCategory('length')"
+      type="button"
+    >
       Length
     </button>
 
-    <button id="weightBtn" onclick="setCategory('weight')">
+    <button
+      id="weightBtn"
+      onclick="setCategory('weight')"
+      type="button"
+    >
       Weight
     </button>
 
-    <button id="temperatureBtn" onclick="setCategory('temperature')">
+    <button
+      id="temperatureBtn"
+      onclick="setCategory('temperature')"
+      type="button"
+    >
       Temperature
     </button>
 
@@ -257,7 +324,9 @@ footer{
 
   <select id="toUnit"></select>
 
-  <button onclick="convert()">Convert</button>
+  <button onclick="convert()" type="button">
+    Convert
+  </button>
 
   <div class="result" id="result">
     <strong>Your result</strong>
@@ -271,10 +340,103 @@ footer{
   <h2>How the unit converter works</h2>
 
   <p>
-    Choose a category, enter a value and select the units you want to convert
-    between. The calculator supports common length, weight and temperature
-    conversions directly in your browser.
+    Choose a category, enter a value and select the units you want to
+    convert between. The converter performs the calculation instantly
+    in your browser.
   </p>
+
+  <p>
+    UtilityTools currently supports common length, weight and temperature
+    conversions, making it useful for everyday calculations, schoolwork,
+    travel, cooking and general measurement conversions.
+  </p>
+
+  <h3>Length conversions</h3>
+
+  <p>
+    Convert between meters, kilometers, centimeters, millimeters, miles,
+    yards, feet and inches.
+  </p>
+
+  <h3>Weight conversions</h3>
+
+  <p>
+    Convert between kilograms, grams, milligrams, pounds and ounces.
+  </p>
+
+  <h3>Temperature conversions</h3>
+
+  <p>
+    Convert between Celsius, Fahrenheit and Kelvin.
+  </p>
+
+</section>
+
+<section class="faq">
+
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>What can I convert with this unit converter?</summary>
+    <p>
+      You can convert common length, weight and temperature units. Supported
+      units include meters, kilometers, miles, feet, inches, kilograms,
+      pounds, ounces, Celsius, Fahrenheit and Kelvin.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I convert one unit to another?</summary>
+    <p>
+      Select the category you need, enter your value, choose the original
+      unit under <strong>From</strong>, choose the target unit under
+      <strong>To</strong>, and click <strong>Convert</strong>.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I convert kilometers to miles?</summary>
+    <p>
+      Select <strong>Length</strong>, enter the number of kilometers,
+      select <strong>Kilometers</strong> as the original unit and
+      <strong>Miles</strong> as the target unit, then click
+      <strong>Convert</strong>.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I convert kilograms to pounds?</summary>
+    <p>
+      Select <strong>Weight</strong>, choose <strong>Kilograms</strong>
+      under From and <strong>Pounds</strong> under To, enter your value
+      and click <strong>Convert</strong>.
+    </p>
+  </details>
+
+  <details>
+    <summary>Can I convert Celsius to Fahrenheit?</summary>
+    <p>
+      Yes. Select <strong>Temperature</strong>, choose Celsius as the
+      original unit and Fahrenheit as the target unit. The converter
+      automatically applies the appropriate temperature conversion.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does the converter work with decimal values?</summary>
+    <p>
+      Yes. You can enter decimal values such as 2.5, 10.75 or 0.125
+      for more precise conversions.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does this unit converter work on mobile?</summary>
+    <p>
+      Yes. The calculator is designed to work on phones, tablets and
+      desktop browsers.
+    </p>
+  </details>
 
 </section>
 
@@ -406,8 +568,10 @@ function convert(){
 
   result.innerHTML =
     "<strong>" + formatNumber(converted) + " " + to + "</strong>" +
-    "<span>" + value + " " + from + " = " +
-    formatNumber(converted) + " " + to + "</span>";
+    "<span>" +
+    value + " " + from + " = " +
+    formatNumber(converted) + " " + to +
+    "</span>";
 }
 
 function convertTemperature(value,from,to){
@@ -419,11 +583,17 @@ function convertTemperature(value,from,to){
   let celsius;
 
   if(from === "Celsius"){
+
     celsius = value;
+
   }else if(from === "Fahrenheit"){
+
     celsius = (value - 32) * 5 / 9;
+
   }else{
+
     celsius = value - 273.15;
+
   }
 
   if(to === "Celsius"){
