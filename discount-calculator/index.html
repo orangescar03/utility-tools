@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Free discount calculator. Calculate sale prices, discount amounts and savings quickly and easily.">
+
+<title>Discount Calculator – Calculate Sale Price & Savings</title>
+
+<style>
+:root{
+  --bg:#f7f9fc;
+  --card:#fff;
+  --text:#172033;
+  --muted:#60708a;
+  --blue:#2864dc;
+  --blue-light:#edf4ff;
+  --border:#e1e6ef;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+}
+
+.nav{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.back{
+  color:var(--muted);
+  font-weight:600;
+}
+
+.hero{
+  text-align:center;
+  padding:65px 20px 35px;
+}
+
+.hero h1{
+  font-size:clamp(36px,6vw,58px);
+  margin:0 0 16px;
+  line-height:1.1;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  margin:0 auto;
+  max-width:700px;
+  line-height:1.6;
+}
+
+.calculator{
+  max-width:650px;
+  margin:25px auto 60px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 8px 30px rgba(20,40,80,.06);
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-bottom:9px;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  border:1px solid #ccd4e0;
+  border-radius:10px;
+  font-size:17px;
+  margin-bottom:20px;
+  background:#fff;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:15px;
+  background:var(--blue);
+  color:#fff;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.92;
+}
+
+.result{
+  margin-top:20px;
+  padding:22px;
+  background:var(--blue-light);
+  border-radius:12px;
+  text-align:center;
+  color:#174da8;
+}
+
+.result strong{
+  display:block;
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.result span{
+  display:block;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.info{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.info h2{
+  margin-top:0;
+}
+
+.info p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+footer{
+  background:#fff;
+  border-top:1px solid var(--border);
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+@media(max-width:700px){
+  .calculator{
+    margin:20px 15px 45px;
+    padding:22px;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+
+  .info{
+    margin:0 15px 45px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="../" class="logo">UtilityTools</a>
+    <a href="../" class="back">← All tools</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <h1>Discount Calculator</h1>
+  <p>Calculate the sale price, discount amount and total savings from any percentage discount.</p>
+</section>
+
+<div class="calculator">
+
+  <label for="originalPrice">Original price</label>
+  <input
+    type="number"
+    id="originalPrice"
+    placeholder="e.g. 1000"
+    min="0"
+    step="any"
+  >
+
+  <label for="discountPercent">Discount percentage</label>
+  <input
+    type="number"
+    id="discountPercent"
+    placeholder="e.g. 20"
+    min="0"
+    max="100"
+    step="any"
+  >
+
+  <button onclick="calculateDiscount()">Calculate Discount</button>
+
+  <div class="result" id="result">
+    <strong>Your result</strong>
+    <span>Enter the original price and discount above.</span>
+  </div>
+
+</div>
+
+<section class="info">
+
+  <h2>How to calculate a discount</h2>
+
+  <p>
+    To calculate a discount, multiply the original price by the discount
+    percentage divided by 100. Subtract the resulting discount amount from
+    the original price to find the final sale price.
+  </p>
+
+  <p>
+    For example, a 20% discount on a ₹1,000 item saves ₹200, making the
+    final price ₹800.
+  </p>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 UtilityTools
+</footer>
+
+<script>
+
+function calculateDiscount(){
+
+  const price = parseFloat(
+    document.getElementById("originalPrice").value
+  );
+
+  const percent = parseFloat(
+    document.getElementById("discountPercent").value
+  );
+
+  const result = document.getElementById("result");
+
+  if(
+    isNaN(price) ||
+    isNaN(percent) ||
+    price < 0 ||
+    percent < 0 ||
+    percent > 100
+  ){
+    result.innerHTML =
+      "<strong>Enter valid values</strong>" +
+      "<span>Enter a price and a discount between 0% and 100%.</span>";
+    return;
+  }
+
+  const discountAmount = price * (percent / 100);
+  const finalPrice = price - discountAmount;
+
+  result.innerHTML =
+    "<strong>Final price: " + formatNumber(finalPrice) + "</strong>" +
+    "<span>You save " + formatNumber(discountAmount) +
+    " (" + formatNumber(percent) + "% off)</span>";
+}
+
+function formatNumber(number){
+
+  return number.toLocaleString(undefined,{
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  });
+
+}
+
+</script>
+
+</body>
+</html>
