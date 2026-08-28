@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Free percentage calculator for common percentage calculations.">
+<title>Percentage Calculator — Utility Tools</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--text:#172033;--muted:#667085;--line:#e5e7eb;--blue:#2563eb}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}.wrap{max-width:900px;width:calc(100% - 32px);margin:auto}
+header{background:#fff;border-bottom:1px solid var(--line)}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:800}.logo span{color:var(--blue)}.back{color:var(--muted);font-size:14px;font-weight:600}
+main{padding:55px 0 70px}h1{text-align:center;font-size:42px;letter-spacing:-1.5px;margin:0 0 10px}.intro{text-align:center;color:var(--muted);margin:0 auto 35px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 5px 20px #1018280a}
+.card h2{font-size:18px;line-height:1.3;margin:0 0 18px}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}.field input{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font-size:16px;outline:0}
+button{width:100%;height:44px;border:0;border-radius:10px;background:var(--blue);color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-top:5px}.result{min-height:52px;margin-top:14px;padding:12px;border-radius:10px;background:#eff6ff;color:#1747a1;font-weight:750;text-align:center;display:flex;align-items:center;justify-content:center}
+.info{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:20px;color:var(--muted);font-size:14px}.info h2{color:var(--text);font-size:20px;margin:0 0 8px}
+footer{border-top:1px solid var(--line);background:#fff;padding:28px 0;color:var(--muted);font-size:13px;text-align:center}
+@media(max-width:760px){.grid{grid-template-columns:1fr}h1{font-size:36px}}
+</style></head><body>
+<header><div class="wrap nav"><a class="logo" href="../">Utility<span>Tools</span></a><a class="back" href="../">← All tools</a></div></header>
+<main><div class="wrap"><h1>Percentage Calculator</h1><p class="intro">Calculate percentages quickly with three common percentage calculations.</p>
+<div class="grid">
+<section class="card"><h2>What is X% of Y?</h2><div class="field"><label>Percentage</label><input id="p1" type="number" step="any" placeholder="e.g. 20"></div><div class="field"><label>Number</label><input id="n1" type="number" step="any" placeholder="e.g. 150"></div><button onclick="calc1()">Calculate</button><div class="result" id="r1">Your answer</div></section>
+<section class="card"><h2>X is what % of Y?</h2><div class="field"><label>X</label><input id="x2" type="number" step="any" placeholder="e.g. 30"></div><div class="field"><label>Y</label><input id="y2" type="number" step="any" placeholder="e.g. 150"></div><button onclick="calc2()">Calculate</button><div class="result" id="r2">Your answer</div></section>
+<section class="card"><h2>Percentage change</h2><div class="field"><label>Original value</label><input id="old3" type="number" step="any" placeholder="e.g. 100"></div><div class="field"><label>New value</label><input id="new3" type="number" step="any" placeholder="e.g. 125"></div><button onclick="calc3()">Calculate</button><div class="result" id="r3">Your answer</div></section>
+</div>
+<div class="info"><h2>How to calculate a percentage</h2><p>To find a percentage of a number, multiply the number by the percentage divided by 100. To find what percentage one number is of another, divide the first number by the second and multiply by 100. Percentage change compares the difference with the original value.</p></div>
+</div></main><footer>© 2026 Utility Tools</footer>
+<script>
+const v=id=>Number(document.getElementById(id).value), f=n=>n.toLocaleString(undefined,{maximumFractionDigits:8});
+function calc1(){let p=v('p1'),n=v('n1');document.getElementById('r1').textContent=Number.isFinite(p)&&Number.isFinite(n)?f(p*n/100):'Enter both values'}
+function calc2(){let x=v('x2'),y=v('y2');document.getElementById('r2').textContent=Number.isFinite(x)&&Number.isFinite(y)&&y!==0?f(x/y*100)+'%':'Enter valid values'}
+function calc3(){let a=v('old3'),b=v('new3');if(Number.isFinite(a)&&Number.isFinite(b)&&a!==0){let c=(b-a)/Math.abs(a)*100;document.getElementById('r3').textContent=(c>=0?'+':'')+f(c)+'% ('+(c>=0?'increase':'decrease')+')'}else document.getElementById('r3').textContent='Enter valid values'}
+</script></body></html>
