@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://orangescar03.github.io/utility-tools/sitemap.xml
