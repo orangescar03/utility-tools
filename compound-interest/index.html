@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Free compound interest calculator. Calculate compound interest, total amount and interest earned from your investment or savings.">
+
+<title>Compound Interest Calculator – Calculate Interest & Growth</title>
+
+<style>
+:root{
+  --bg:#f7f9fc;
+  --card:#fff;
+  --text:#172033;
+  --muted:#60708a;
+  --blue:#2864dc;
+  --blue-light:#edf4ff;
+  --border:#e1e6ef;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{text-decoration:none;color:inherit}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+}
+
+.nav{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.back{
+  color:var(--muted);
+  font-weight:600;
+}
+
+.hero{
+  text-align:center;
+  padding:65px 20px 35px;
+}
+
+.hero h1{
+  font-size:clamp(36px,6vw,58px);
+  margin:0 0 16px;
+  line-height:1.1;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  margin:0 auto;
+  max-width:720px;
+  line-height:1.6;
+}
+
+.calculator{
+  max-width:650px;
+  margin:25px auto 60px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 8px 30px rgba(20,40,80,.06);
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-bottom:9px;
+}
+
+input,select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ccd4e0;
+  border-radius:10px;
+  font-size:17px;
+  margin-bottom:20px;
+  background:#fff;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:15px;
+  background:var(--blue);
+  color:#fff;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.92;
+}
+
+.result{
+  margin-top:20px;
+  padding:22px;
+  background:var(--blue-light);
+  border-radius:12px;
+  color:#174da8;
+  text-align:center;
+}
+
+.result strong{
+  display:block;
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.result span{
+  display:block;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.info{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.info h2{
+  margin-top:0;
+}
+
+.info p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+footer{
+  background:#fff;
+  border-top:1px solid var(--border);
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+@media(max-width:700px){
+  .calculator{
+    margin:20px 15px 45px;
+    padding:22px;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+
+  .info{
+    margin:0 15px 45px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="../" class="logo">UtilityTools</a>
+    <a href="../" class="back">← All tools</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <h1>Compound Interest Calculator</h1>
+  <p>Calculate compound interest, total growth and the final value of your investment.</p>
+</section>
+
+<div class="calculator">
+
+  <label for="principal">
+    Initial investment (₹)
+  </label>
+
+  <input
+    type="number"
+    id="principal"
+    placeholder="e.g. 100000"
+    min="0"
+    step="any"
+  >
+
+  <label for="rate">
+    Annual interest rate (%)
+  </label>
+
+  <input
+    type="number"
+    id="rate"
+    placeholder="e.g. 8"
+    min="0"
+    step="any"
+  >
+
+  <label for="years">
+    Investment period (years)
+  </label>
+
+  <input
+    type="number"
+    id="years"
+    placeholder="e.g. 10"
+    min="0"
+    step="any"
+  >
+
+  <label for="frequency">
+    Compounding frequency
+  </label>
+
+  <select id="frequency">
+    <option value="1">Annually</option>
+    <option value="2">Half-yearly</option>
+    <option value="4">Quarterly</option>
+    <option value="12" selected>Monthly</option>
+    <option value="365">Daily</option>
+  </select>
+
+  <button onclick="calculateCompoundInterest()">
+    Calculate
+  </button>
+
+  <div class="result" id="result">
+    <strong>Your result</strong>
+    <span>Enter your investment details above.</span>
+  </div>
+
+</div>
+
+<section class="info">
+
+  <h2>How compound interest works</h2>
+
+  <p>
+    Compound interest allows interest to be added to the existing balance,
+    so future interest can be earned on both the original amount and
+    previously accumulated interest.
+  </p>
+
+  <p>
+    This calculator uses the standard compound-interest formula and lets
+    you choose how frequently the interest is compounded.
+  </p>
+
+  <p>
+    Results are estimates and assume the interest rate remains constant
+    throughout the entire period.
+  </p>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 UtilityTools
+</footer>
+
+<script>
+
+function calculateCompoundInterest(){
+
+  const principal = parseFloat(
+    document.getElementById("principal").value
+  );
+
+  const rate = parseFloat(
+    document.getElementById("rate").value
+  );
+
+  const years = parseFloat(
+    document.getElementById("years").value
+  );
+
+  const frequency = parseInt(
+    document.getElementById("frequency").value
+  );
+
+  const result = document.getElementById("result");
+
+  if(
+    isNaN(principal) ||
+    isNaN(rate) ||
+    isNaN(years) ||
+    principal < 0 ||
+    rate < 0 ||
+    years < 0
+  ){
+
+    result.innerHTML =
+      "<strong>Enter valid values</strong>" +
+      "<span>Please enter valid investment, interest rate and period values.</span>";
+
+    return;
+  }
+
+  const amount =
+    principal *
+    Math.pow(
+      1 + (rate / 100) / frequency,
+      frequency * years
+    );
+
+  const interest = amount - principal;
+
+  result.innerHTML =
+    "<strong>Final amount: " +
+    formatCurrency(amount) +
+    "</strong>" +
+    "<span>" +
+    "Initial investment: " +
+    formatCurrency(principal) +
+    "<br>" +
+    "Interest earned: " +
+    formatCurrency(interest) +
+    "</span>";
+}
+
+function formatCurrency(number){
+
+  return number.toLocaleString("en-IN",{
+    style:"currency",
+    currency:"INR",
+    maximumFractionDigits:2
+  });
+
+}
+
+</script>
+
+</body>
+</html>
