@@ -1,187 +1,365 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="description" content="Free discount calculator. Calculate sale prices, discount amounts and savings quickly and easily.">
+<meta name="description" content="Free discount calculator. Calculate sale prices, discount amounts, savings, and percentage discounts quickly and easily.">
 
-<title>Discount Calculator – Calculate Sale Price & Savings</title>
+<meta name="google-site-verification" content="QxPjoJB8AlcNWDkujc1nF5abSkH8GgDbswVTqJ_wzo0">
+
+<title>Discount Calculator - Calculate Sale Price & Savings | Utility Tools</title>
 
 <style>
 :root{
   --bg:#f7f9fc;
   --card:#fff;
   --text:#172033;
-  --muted:#60708a;
-  --blue:#2864dc;
-  --blue-light:#edf4ff;
-  --border:#e1e6ef;
+  --muted:#667085;
+  --line:#e5e7eb;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
 }
 
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
+  line-height:1.6;
 }
 
 a{
-  text-decoration:none;
   color:inherit;
-}
-
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
+  text-decoration:none;
 }
 
 .wrap{
-  max-width:1200px;
+  width:calc(100% - 24px);
+  max-width:900px;
   margin:auto;
-  padding:0 24px;
+}
+
+/* HEADER */
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .nav{
-  height:72px;
+  min-height:64px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-  font-size:21px;
+  font-size:19px;
   font-weight:800;
+}
+
+.logo span{
   color:var(--blue);
 }
 
 .back{
   color:var(--muted);
+  font-size:14px;
   font-weight:600;
 }
 
+/* HERO */
+
 .hero{
   text-align:center;
-  padding:65px 20px 35px;
+  padding:48px 0 30px;
 }
 
-.hero h1{
-  font-size:clamp(36px,6vw,58px);
-  margin:0 0 16px;
-  line-height:1.1;
+.tag{
+  display:inline-block;
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+h1{
+  margin:0 auto 12px;
+  font-size:clamp(34px,6vw,52px);
+  line-height:1.08;
+  letter-spacing:-2px;
 }
 
 .hero p{
-  color:var(--muted);
-  font-size:18px;
+  max-width:650px;
   margin:0 auto;
-  max-width:700px;
-  line-height:1.6;
+  color:var(--muted);
+  font-size:17px;
 }
 
+/* CALCULATOR */
+
 .calculator{
-  max-width:650px;
-  margin:25px auto 60px;
   background:var(--card);
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:32px;
-  box-shadow:0 8px 30px rgba(20,40,80,.06);
+  padding:25px;
+  margin:10px auto 45px;
+  box-shadow:0 4px 20px rgba(16,24,40,.04);
 }
 
 label{
   display:block;
+  margin-bottom:7px;
+  font-size:14px;
   font-weight:700;
-  margin-bottom:9px;
 }
 
 input{
   width:100%;
-  padding:15px;
-  border:1px solid #ccd4e0;
+  height:48px;
+  padding:0 14px;
+  margin-bottom:16px;
+  border:1px solid #d0d5dd;
   border-radius:10px;
-  font-size:17px;
-  margin-bottom:20px;
   background:#fff;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
 }
 
 button{
   width:100%;
+  height:48px;
   border:0;
   border-radius:10px;
-  padding:15px;
   background:var(--blue);
   color:#fff;
-  font-size:17px;
+  font-size:15px;
   font-weight:700;
   cursor:pointer;
 }
 
 button:hover{
-  opacity:.92;
+  opacity:.94;
 }
 
 .result{
-  margin-top:20px;
-  padding:22px;
+  margin-top:15px;
+  padding:16px;
+  border-radius:11px;
   background:var(--blue-light);
-  border-radius:12px;
+  color:var(--text);
   text-align:center;
-  color:#174da8;
 }
 
 .result strong{
   display:block;
-  font-size:30px;
-  margin-bottom:8px;
+  font-size:25px;
+  margin-bottom:3px;
 }
 
 .result span{
   display:block;
   color:var(--muted);
-  line-height:1.6;
+  font-size:14px;
 }
 
-.info{
-  max-width:850px;
-  margin:0 auto 70px;
+/* CONTENT */
+
+.content{
+  padding-bottom:45px;
+}
+
+.content-section{
   background:#fff;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:30px;
+  padding:25px;
+  margin-bottom:16px;
 }
 
-.info h2{
-  margin-top:0;
+.content-section h2{
+  margin:0 0 12px;
+  font-size:24px;
+  letter-spacing:-.5px;
 }
 
-.info p{
+.content-section h3{
+  margin:22px 0 7px;
+  font-size:18px;
+}
+
+.content-section p{
+  margin:0 0 13px;
+  color:#475467;
+}
+
+.formula{
+  padding:14px;
+  margin:14px 0;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#f8fafc;
+  text-align:center;
+  font-weight:700;
+}
+
+/* EXAMPLES */
+
+.example{
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+
+.example:first-of-type{
+  border-top:0;
+}
+
+.example strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* FAQ */
+
+.faq{
+  border-top:1px solid var(--line);
+}
+
+.faq:first-of-type{
+  border-top:0;
+}
+
+.faq button{
+  height:auto;
+  margin:0;
+  padding:16px 0;
+  background:none;
+  color:var(--text);
+  text-align:left;
+  font-size:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.faq button span:last-child{
   color:var(--muted);
-  line-height:1.7;
+  font-size:19px;
 }
+
+.answer{
+  display:none;
+  padding:0 0 16px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.faq.open .answer{
+  display:block;
+}
+
+/* RELATED */
+
+.related{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.related a{
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:14px;
+  border-radius:11px;
+  text-align:center;
+  font-size:14px;
+  font-weight:700;
+}
+
+.related a:hover{
+  background:#dbeafe;
+}
+
+/* FOOTER */
 
 footer{
   background:#fff;
-  border-top:1px solid var(--border);
-  padding:30px;
-  text-align:center;
+  border-top:1px solid var(--line);
+  padding:28px 0;
   color:var(--muted);
+  font-size:13px;
 }
 
+.foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.links a:hover{
+  color:var(--blue);
+}
+
+/* MOBILE */
+
 @media(max-width:700px){
-  .calculator{
-    margin:20px 15px 45px;
-    padding:22px;
-  }
 
   .hero{
-    padding-top:45px;
+    padding:40px 0 25px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  h1{
+    font-size:36px;
+    letter-spacing:-1.5px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .calculator,
+  .content-section{
+    padding:20px;
+    border-radius:15px;
+  }
+
+  .related{
+    grid-template-columns:1fr;
+  }
+
+  .foot{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .links{
+    gap:12px;
   }
 }
 </style>
@@ -191,7 +369,7 @@ footer{
 
 <header>
   <div class="wrap nav">
-    <a href="../" class="logo">UtilityTools</a>
+    <a href="../" class="logo">Utility<span>Tools</span></a>
     <a href="../" class="back">← All tools</a>
   </div>
 </header>
@@ -199,98 +377,270 @@ footer{
 <main>
 
 <section class="hero">
-  <h1>Discount Calculator</h1>
-  <p>Calculate the sale price, discount amount and total savings from any percentage discount.</p>
-</section>
 
-<div class="calculator">
+  <div class="wrap">
 
-  <label for="originalPrice">Original price</label>
-  <input
-    type="number"
-    id="originalPrice"
-    placeholder="e.g. 1000"
-    min="0"
-    step="any"
-  >
+    <div class="tag">Free • Fast • No sign-up</div>
 
-  <label for="discountPercent">Discount percentage</label>
-  <input
-    type="number"
-    id="discountPercent"
-    placeholder="e.g. 20"
-    min="0"
-    max="100"
-    step="any"
-  >
+    <h1>Discount Calculator</h1>
 
-  <button onclick="calculateDiscount()">Calculate Discount</button>
+    <p>
+      Calculate the sale price, discount amount, and total savings from any percentage discount.
+    </p>
 
-  <div class="result" id="result">
-    <strong>Your result</strong>
-    <span>Enter the original price and discount above.</span>
   </div>
 
-</div>
+</section>
 
-<section class="info">
 
-  <h2>How to calculate a discount</h2>
+<section>
 
-  <p>
-    To calculate a discount, multiply the original price by the discount
-    percentage divided by 100. Subtract the resulting discount amount from
-    the original price to find the final sale price.
-  </p>
+  <div class="wrap">
 
-  <p>
-    For example, a 20% discount on a ₹1,000 item saves ₹200, making the
-    final price ₹800.
-  </p>
+    <div class="calculator">
+
+      <label for="originalPrice">
+        Original price
+      </label>
+
+      <input
+        type="number"
+        id="originalPrice"
+        placeholder="e.g. 1000"
+        min="0"
+        step="any"
+        inputmode="decimal"
+      >
+
+      <label for="discountPercent">
+        Discount percentage
+      </label>
+
+      <input
+        type="number"
+        id="discountPercent"
+        placeholder="e.g. 20"
+        min="0"
+        max="100"
+        step="any"
+        inputmode="decimal"
+      >
+
+      <button onclick="calculateDiscount()">
+        Calculate Discount
+      </button>
+
+      <div class="result" id="result">
+
+        <strong>Your result</strong>
+
+        <span>
+          Enter the original price and discount above.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="content">
+
+  <div class="wrap">
+
+    <!-- HOW IT WORKS -->
+
+    <div class="content-section">
+
+      <h2>How to calculate a discount</h2>
+
+      <p>
+        A discount reduces the original price of an item by a certain percentage.
+        To calculate the discount amount, multiply the original price by the
+        discount percentage divided by 100.
+      </p>
+
+      <div class="formula">
+        Discount Amount = Original Price × (Discount % ÷ 100)
+      </div>
+
+      <p>
+        Then subtract the discount amount from the original price to find the
+        final sale price.
+      </p>
+
+      <div class="formula">
+        Sale Price = Original Price − Discount Amount
+      </div>
+
+    </div>
+
+
+    <!-- EXAMPLES -->
+
+    <div class="content-section">
+
+      <h2>Discount examples</h2>
+
+      <div class="example">
+
+        <strong>20% off ₹1,000</strong>
+
+        <p>
+          Discount = ₹1,000 × 20% = ₹200.
+          The final sale price is <strong>₹800</strong>.
+        </p>
+
+      </div>
+
+      <div class="example">
+
+        <strong>30% off ₹2,500</strong>
+
+        <p>
+          Discount = ₹2,500 × 30% = ₹750.
+          The final sale price is <strong>₹1,750</strong>.
+        </p>
+
+      </div>
+
+      <div class="example">
+
+        <strong>15% off ₹800</strong>
+
+        <p>
+          Discount = ₹800 × 15% = ₹120.
+          The final sale price is <strong>₹680</strong>.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- FAQ -->
+
+    <div class="content-section">
+
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq">
+
+        <button onclick="toggleFaq(this)">
+          <span>How do I calculate a discount?</span>
+          <span>+</span>
+        </button>
+
+        <div class="answer">
+          Multiply the original price by the discount percentage divided by 100.
+          Subtract that amount from the original price to get the sale price.
+        </div>
+
+      </div>
+
+
+      <div class="faq">
+
+        <button onclick="toggleFaq(this)">
+          <span>What is the sale price after a discount?</span>
+          <span>+</span>
+        </button>
+
+        <div class="answer">
+          The sale price is the original price minus the discount amount.
+          For example, a ₹1,000 item with a 20% discount costs ₹800.
+        </div>
+
+      </div>
+
+
+      <div class="faq">
+
+        <button onclick="toggleFaq(this)">
+          <span>How much do I save with a discount?</span>
+          <span>+</span>
+        </button>
+
+        <div class="answer">
+          Your savings are equal to the original price multiplied by the
+          discount percentage divided by 100.
+        </div>
+
+      </div>
+
+
+      <div class="faq">
+
+        <button onclick="toggleFaq(this)">
+          <span>Can I calculate a 100% discount?</span>
+          <span>+</span>
+        </button>
+
+        <div class="answer">
+          Yes. A 100% discount means the entire original price is discounted,
+          resulting in a final price of zero.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RELATED -->
+
+    <div class="content-section">
+
+      <h2>Related calculators</h2>
+
+      <div class="related">
+
+        <a href="../percentage-calculator/">
+          Percentage Calculator
+        </a>
+
+        <a href="../gst-calculator/">
+          GST Calculator
+        </a>
+
+        <a href="../tip-calculator/">
+          Tip Calculator
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 </main>
 
+
 <footer>
-  © 2026 UtilityTools
+
+  <div class="wrap foot">
+
+    <div>
+      © 2026 Utility Tools
+    </div>
+
+    <div class="links">
+      <a href="../about/">About</a>
+      <a href="../privacy-policy/">Privacy</a>
+      <a href="../terms/">Terms</a>
+      <a href="../contact/">Contact</a>
+    </div>
+
+  </div>
+
 </footer>
 
+
 <script>
-
-function calculateDiscount(){
-
-  const price = parseFloat(
-    document.getElementById("originalPrice").value
-  );
-
-  const percent = parseFloat(
-    document.getElementById("discountPercent").value
-  );
-
-  const result = document.getElementById("result");
-
-  if(
-    isNaN(price) ||
-    isNaN(percent) ||
-    price < 0 ||
-    percent < 0 ||
-    percent > 100
-  ){
-    result.innerHTML =
-      "<strong>Enter valid values</strong>" +
-      "<span>Enter a price and a discount between 0% and 100%.</span>";
-    return;
-  }
-
-  const discountAmount = price * (percent / 100);
-  const finalPrice = price - discountAmount;
-
-  result.innerHTML =
-    "<strong>Final price: " + formatNumber(finalPrice) + "</strong>" +
-    "<span>You save " + formatNumber(discountAmount) +
-    " (" + formatNumber(percent) + "% off)</span>";
-}
 
 function formatNumber(number){
 
@@ -298,6 +648,100 @@ function formatNumber(number){
     minimumFractionDigits:2,
     maximumFractionDigits:2
   });
+
+}
+
+
+function calculateDiscount(){
+
+  const price =
+    parseFloat(
+      document.getElementById("originalPrice").value
+    );
+
+  const percent =
+    parseFloat(
+      document.getElementById("discountPercent").value
+    );
+
+  const result =
+    document.getElementById("result");
+
+
+  if(
+    !Number.isFinite(price) ||
+    !Number.isFinite(percent) ||
+    price < 0 ||
+    percent < 0 ||
+    percent > 100
+  ){
+
+    result.innerHTML =
+      "<strong>Enter valid values</strong>" +
+      "<span>Enter a price and a discount between 0% and 100%.</span>";
+
+    return;
+  }
+
+
+  const discountAmount =
+    price * (percent / 100);
+
+  const finalPrice =
+    price - discountAmount;
+
+
+  result.innerHTML =
+    "<strong>Final price: " +
+    formatNumber(finalPrice) +
+    "</strong>" +
+
+    "<span>You save " +
+    formatNumber(discountAmount) +
+    " (" +
+    formatNumber(percent) +
+    "% off)</span>";
+
+}
+
+
+function toggleFaq(button){
+
+  const faq =
+    button.parentElement;
+
+  const isOpen =
+    faq.classList.contains("open");
+
+
+  document
+    .querySelectorAll(".faq")
+    .forEach(item => {
+
+      item.classList.remove("open");
+
+      const symbol =
+        item.querySelector("button span:last-child");
+
+      if(symbol){
+        symbol.textContent = "+";
+      }
+
+    });
+
+
+  if(!isOpen){
+
+    faq.classList.add("open");
+
+    const symbol =
+      button.querySelector("span:last-child");
+
+    if(symbol){
+      symbol.textContent = "−";
+    }
+
+  }
 
 }
 
