@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="description" content="Free online calculators and utility tools for finance, everyday calculations, health, and text. Simple, fast, and no sign-up required.">
+<meta name="description" content="Free, simple online calculators and utility tools.">
+
+<meta name="google-site-verification" content="QxPjoJB8AlcNWDkujc1nF5abSkH8GgDbswVTqJ_wzo0">
 
 <title>Utility Tools — Free Online Calculators</title>
 
@@ -16,16 +18,10 @@
   --muted:#667085;
   --line:#e5e7eb;
   --blue:#2563eb;
-  --blue-dark:#1d4ed8;
-  --soft:#eff6ff;
 }
 
 *{
   box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
 }
 
 body{
@@ -46,15 +42,12 @@ a{
   margin:auto;
 }
 
-/* HEADER */
-
 header{
-  background:rgba(255,255,255,.94);
+  background:#fff;
   border-bottom:1px solid var(--line);
   position:sticky;
   top:0;
-  z-index:10;
-  backdrop-filter:blur(10px);
+  z-index:5;
 }
 
 .nav{
@@ -65,9 +58,8 @@ header{
 }
 
 .logo{
-  font-size:21px;
+  font-size:20px;
   font-weight:800;
-  letter-spacing:-.5px;
 }
 
 .logo span{
@@ -76,156 +68,84 @@ header{
 
 nav{
   display:flex;
-  gap:26px;
+  gap:24px;
   color:var(--muted);
   font-size:14px;
   font-weight:600;
 }
 
-nav a:hover{
-  color:var(--blue);
-}
-
-/* HERO */
-
 .hero{
   text-align:center;
-  padding:78px 0 62px;
+  padding:72px 0 52px;
 }
 
 .tag{
-  display:inline-flex;
-  align-items:center;
-  background:var(--soft);
+  display:inline-block;
+  background:#eff6ff;
   color:var(--blue);
-  padding:7px 13px;
+  padding:6px 12px;
   border-radius:999px;
   font-size:13px;
   font-weight:700;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 h1{
-  font-size:clamp(40px,6vw,64px);
-  line-height:1.04;
-  letter-spacing:-3px;
-  margin:0 auto 20px;
-  max-width:850px;
+  font-size:clamp(38px,6vw,62px);
+  line-height:1.05;
+  letter-spacing:-2.5px;
+  margin:0 auto 18px;
+  max-width:800px;
 }
 
 .hero p{
   max-width:650px;
-  margin:0 auto 32px;
+  margin:0 auto 30px;
   color:var(--muted);
   font-size:18px;
   line-height:1.6;
 }
 
-/* SEARCH */
-
 .search{
   max-width:650px;
   margin:auto;
-  position:relative;
 }
 
 .search input{
   width:100%;
-  height:58px;
+  height:56px;
   border:1px solid var(--line);
-  border-radius:15px;
+  border-radius:14px;
   padding:0 20px;
   font-size:16px;
-  outline:none;
-  background:#fff;
-  box-shadow:0 10px 35px rgba(16,24,40,.07);
-  transition:.18s;
+  outline:0;
+  box-shadow:0 8px 30px #1018280c;
 }
 
 .search input:focus{
-  border-color:#93b4f8;
-  box-shadow:0 10px 35px rgba(37,99,235,.12);
+  border-color:#93c5fd;
+  box-shadow:0 8px 30px #10182812;
 }
 
-.search input::placeholder{
-  color:#98a2b3;
+section{
+  padding:20px 0 64px;
 }
 
-/* TRUST STRIP */
-
-.features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-bottom:62px;
+.head{
+  margin-bottom:20px;
 }
 
-.feature{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:18px;
-  text-align:center;
-}
-
-.feature strong{
-  display:block;
-  font-size:15px;
-  margin-bottom:4px;
-}
-
-.feature span{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* TOOL SECTION */
-
-section.tools{
-  padding:0 0 75px;
-}
-
-.section-heading{
-  margin-bottom:34px;
-}
-
-.section-heading h2{
+.head h2{
   margin:0;
-  font-size:30px;
-  letter-spacing:-1px;
+  font-size:28px;
+  letter-spacing:-.8px;
 }
 
-.section-heading p{
-  margin:7px 0 0;
+.head p{
+  margin:5px 0 0;
   color:var(--muted);
-  font-size:15px;
+  font-size:14px;
 }
-
-/* CATEGORY */
-
-.category{
-  margin-bottom:42px;
-}
-
-.category-title{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.category-title h3{
-  margin:0;
-  font-size:20px;
-  letter-spacing:-.4px;
-}
-
-.category-title span{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* GRID */
 
 .grid{
   display:grid;
@@ -237,48 +157,44 @@ section.tools{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:16px;
-  padding:23px;
-  transition:transform .18s,box-shadow .18s,border-color .18s;
+  padding:24px;
+  transition:.18s;
 }
 
 .card:hover{
   transform:translateY(-3px);
-  box-shadow:0 12px 32px rgba(16,24,40,.09);
+  box-shadow:0 8px 30px #10182812;
   border-color:#cbd5e1;
 }
 
 .icon{
-  width:43px;
-  height:43px;
+  width:42px;
+  height:42px;
   display:grid;
   place-items:center;
   border-radius:12px;
-  background:var(--soft);
+  background:#eff6ff;
   color:var(--blue);
   font-weight:800;
-  font-size:13px;
-  margin-bottom:17px;
+  margin-bottom:18px;
 }
 
-.card h4{
+.card h3{
   margin:0 0 7px;
-  font-size:17px;
-  letter-spacing:-.2px;
+  font-size:18px;
 }
 
 .card p{
   margin:0;
   color:var(--muted);
   font-size:14px;
-  line-height:1.55;
+  line-height:1.6;
 }
-
-/* FOOTER */
 
 footer{
   background:#fff;
   border-top:1px solid var(--line);
-  padding:32px 0;
+  padding:30px 0;
   color:var(--muted);
   font-size:13px;
 }
@@ -292,14 +208,13 @@ footer{
 
 .links{
   display:flex;
-  gap:20px;
+  gap:18px;
+  flex-wrap:wrap;
 }
 
 .links a:hover{
   color:var(--blue);
 }
-
-/* MOBILE */
 
 @media(max-width:760px){
 
@@ -308,36 +223,27 @@ footer{
   }
 
   .hero{
-    padding:56px 0 45px;
+    padding:56px 0 42px;
   }
 
   h1{
-    letter-spacing:-2px;
+    letter-spacing:-1.7px;
   }
 
-  .features{
-    grid-template-columns:1fr;
-    margin-bottom:48px;
+  .hero p{
+    font-size:16px;
   }
 
   .grid{
     grid-template-columns:1fr;
   }
 
-  .category{
-    margin-bottom:36px;
-  }
-
-  .section-heading h2{
-    font-size:27px;
+  .card{
+    padding:22px;
   }
 
   .foot{
     flex-direction:column;
-  }
-
-  .links{
-    flex-wrap:wrap;
   }
 }
 </style>
@@ -362,9 +268,8 @@ footer{
 
 <main>
 
-<!-- HERO -->
-
 <section class="hero" id="about">
+
   <div class="wrap">
 
     <div class="tag">
@@ -376,7 +281,7 @@ footer{
     </h1>
 
     <p>
-      Fast, straightforward calculators and utilities that give you
+      Quick, straightforward calculators and utilities that give you
       the answer without unnecessary steps.
     </p>
 
@@ -390,199 +295,113 @@ footer{
     </div>
 
   </div>
+
 </section>
 
-<!-- FEATURES -->
+<section id="tools">
 
-<div class="wrap">
+  <div class="wrap">
 
-  <div class="features">
-
-    <div class="feature">
-      <strong>100% Free</strong>
-      <span>No payment required</span>
+    <div class="head">
+      <h2>Popular tools</h2>
+      <p>Free tools, with more being added over time.</p>
     </div>
 
-    <div class="feature">
-      <strong>No Sign-up</strong>
-      <span>Use tools instantly</span>
+    <div class="grid" id="grid">
+
+      <a class="card" href="./percentage-calculator/">
+        <div class="icon">%</div>
+        <h3>Percentage Calculator</h3>
+        <p>Calculate percentages, percentage changes, and common percentage problems.</p>
+      </a>
+
+      <a class="card" href="./age-calculator/">
+        <div class="icon">AGE</div>
+        <h3>Age Calculator</h3>
+        <p>Calculate exact age in years, months, and days.</p>
+      </a>
+
+      <a class="card" href="./bmi-calculator/">
+        <div class="icon">BMI</div>
+        <h3>BMI Calculator</h3>
+        <p>Calculate BMI from height and weight.</p>
+      </a>
+
+      <a class="card" href="./discount-calculator/">
+        <div class="icon">%</div>
+        <h3>Discount Calculator</h3>
+        <p>Find sale prices, savings, and percentage discounts.</p>
+      </a>
+
+      <a class="card" href="./emi-calculator/">
+        <div class="icon">₹</div>
+        <h3>EMI Calculator</h3>
+        <p>Estimate monthly loan payments and total interest.</p>
+      </a>
+
+      <a class="card" href="./gst-calculator/">
+        <div class="icon">GST</div>
+        <h3>GST Calculator</h3>
+        <p>Calculate GST amounts and prices including or excluding GST.</p>
+      </a>
+
+      <a class="card" href="./tip-calculator/">
+        <div class="icon">TIP</div>
+        <h3>Tip Calculator</h3>
+        <p>Calculate tips and split a bill between people.</p>
+      </a>
+
+      <a class="card" href="./unit-converter/">
+        <div class="icon">↔</div>
+        <h3>Unit Converter</h3>
+        <p>Convert common units of length, weight, and temperature.</p>
+      </a>
+
+      <a class="card" href="./word-counter/">
+        <div class="icon">Aa</div>
+        <h3>Word &amp; Character Counter</h3>
+        <p>Count words, characters, sentences, and paragraphs instantly.</p>
+      </a>
+
+      <a class="card" href="./case-converter/">
+        <div class="icon">Aa</div>
+        <h3>Case Converter</h3>
+        <p>Convert text to uppercase, lowercase, title case, and more.</p>
+      </a>
+
+      <a class="card" href="./compound-interest/">
+        <div class="icon">%</div>
+        <h3>Compound Interest Calculator</h3>
+        <p>Calculate compound interest and total investment growth.</p>
+      </a>
+
+      <a class="card" href="./date-difference/">
+        <div class="icon">DATE</div>
+        <h3>Date Difference Calculator</h3>
+        <p>Calculate the difference between two dates.</p>
+      </a>
+
+      <a class="card" href="./fuel-cost/">
+        <div class="icon">₹</div>
+        <h3>Fuel Cost Calculator</h3>
+        <p>Estimate fuel costs for a journey using distance and mileage.</p>
+      </a>
+
+      <a class="card" href="./simple-interest/">
+        <div class="icon">SI</div>
+        <h3>Simple Interest Calculator</h3>
+        <p>Calculate simple interest and the total amount.</p>
+      </a>
+
+      <a class="card" href="./sip-calculator/">
+        <div class="icon">₹</div>
+        <h3>SIP Calculator</h3>
+        <p>Estimate returns and future value from regular SIP investments.</p>
+      </a>
+
     </div>
 
-    <div class="feature">
-      <strong>Fast & Simple</strong>
-      <span>Results in seconds</span>
-    </div>
-
   </div>
-
-</div>
-
-<!-- TOOLS -->
-
-<section class="tools" id="tools">
-
-<div class="wrap">
-
-<div class="section-heading">
-  <h2>Tools</h2>
-  <p>Choose a tool and get your result instantly.</p>
-</div>
-
-
-<!-- FINANCE -->
-
-<div class="category">
-
-  <div class="category-title">
-    <h3>Financial Calculators</h3>
-    <span>7 tools</span>
-  </div>
-
-  <div class="grid">
-
-    <a class="card" href="./emi-calculator/">
-      <div class="icon">₹</div>
-      <h4>EMI Calculator</h4>
-      <p>Estimate monthly loan payments and total interest.</p>
-    </a>
-
-    <a class="card" href="./gst-calculator/">
-      <div class="icon">GST</div>
-      <h4>GST Calculator</h4>
-      <p>Calculate GST amounts and prices including or excluding GST.</p>
-    </a>
-
-    <a class="card" href="./sip-calculator/">
-      <div class="icon">₹</div>
-      <h4>SIP Calculator</h4>
-      <p>Estimate SIP investment growth and potential returns.</p>
-    </a>
-
-    <a class="card" href="./compound-interest/">
-      <div class="icon">CI</div>
-      <h4>Compound Interest Calculator</h4>
-      <p>Calculate compound interest and total investment growth.</p>
-    </a>
-
-    <a class="card" href="./simple-interest/">
-      <div class="icon">SI</div>
-      <h4>Simple Interest Calculator</h4>
-      <p>Calculate simple interest and the total amount.</p>
-    </a>
-
-    <a class="card" href="./discount-calculator/">
-      <div class="icon">%</div>
-      <h4>Discount Calculator</h4>
-      <p>Find sale prices, savings, and percentage discounts.</p>
-    </a>
-
-    <a class="card" href="./tip-calculator/">
-      <div class="icon">TIP</div>
-      <h4>Tip Calculator</h4>
-      <p>Calculate tips and split a bill between people.</p>
-    </a>
-
-  </div>
-
-</div>
-
-
-<!-- EVERYDAY -->
-
-<div class="category">
-
-  <div class="category-title">
-    <h3>Everyday Calculators</h3>
-    <span>5 tools</span>
-  </div>
-
-  <div class="grid">
-
-    <a class="card" href="./percentage-calculator/">
-      <div class="icon">%</div>
-      <h4>Percentage Calculator</h4>
-      <p>Calculate percentages, percentage changes, and common problems.</p>
-    </a>
-
-    <a class="card" href="./age-calculator/">
-      <div class="icon">AGE</div>
-      <h4>Age Calculator</h4>
-      <p>Calculate exact age in years, months, and days.</p>
-    </a>
-
-    <a class="card" href="./date-difference/">
-      <div class="icon">DATE</div>
-      <h4>Date Difference Calculator</h4>
-      <p>Find the exact difference between two dates.</p>
-    </a>
-
-    <a class="card" href="./fuel-cost/">
-      <div class="icon">⛽</div>
-      <h4>Fuel Cost Calculator</h4>
-      <p>Estimate fuel consumption and travel cost.</p>
-    </a>
-
-    <a class="card" href="./unit-converter/">
-      <div class="icon">↔</div>
-      <h4>Unit Converter</h4>
-      <p>Convert common units of length, weight, and temperature.</p>
-    </a>
-
-  </div>
-
-</div>
-
-
-<!-- HEALTH -->
-
-<div class="category">
-
-  <div class="category-title">
-    <h3>Health</h3>
-    <span>1 tool</span>
-  </div>
-
-  <div class="grid">
-
-    <a class="card" href="./bmi-calculator/">
-      <div class="icon">BMI</div>
-      <h4>BMI Calculator</h4>
-      <p>Calculate BMI from height and weight.</p>
-    </a>
-
-  </div>
-
-</div>
-
-
-<!-- TEXT -->
-
-<div class="category">
-
-  <div class="category-title">
-    <h3>Text Tools</h3>
-    <span>2 tools</span>
-  </div>
-
-  <div class="grid">
-
-    <a class="card" href="./word-counter/">
-      <div class="icon">Aa</div>
-      <h4>Word &amp; Character Counter</h4>
-      <p>Count words, characters, sentences, and paragraphs instantly.</p>
-    </a>
-
-    <a class="card" href="./case-converter/">
-      <div class="icon">Aa</div>
-      <h4>Case Converter</h4>
-      <p>Convert text to uppercase, lowercase, title case, and more.</p>
-    </a>
-
-  </div>
-
-</div>
-
-</div>
 
 </section>
 
@@ -608,26 +427,21 @@ footer{
 </footer>
 
 <script>
+const input = document.getElementById('search');
+const cards = [...document.querySelectorAll('.card')];
 
-const input = document.getElementById("search");
-
-const cards = [...document.querySelectorAll(".card")];
-
-input.addEventListener("input", () => {
+input.addEventListener('input', () => {
 
   const q = input.value.toLowerCase().trim();
 
   cards.forEach(card => {
-
     card.style.display =
       card.textContent.toLowerCase().includes(q)
-      ? ""
-      : "none";
-
+      ? ''
+      : 'none';
   });
 
 });
-
 </script>
 
 </body>
