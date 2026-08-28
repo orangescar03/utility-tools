@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Free fuel cost calculator. Calculate fuel consumption and estimated travel cost using distance, mileage and fuel price.">
+<meta name="description" content="Free fuel cost calculator. Estimate fuel required and trip cost using distance, vehicle mileage and fuel price.">
 
-<title>Fuel Cost Calculator – Calculate Trip Fuel Cost</title>
+<title>Fuel Cost Calculator – Calculate Trip Fuel Cost & Fuel Needed</title>
 
 <style>
 :root{
@@ -28,7 +28,10 @@ body{
   color:var(--text);
 }
 
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 header{
   background:#fff;
@@ -104,6 +107,11 @@ input{
   background:#fff;
 }
 
+input:focus{
+  outline:2px solid #b9d0ff;
+  outline-offset:1px;
+}
+
 button{
   width:100%;
   border:0;
@@ -132,7 +140,8 @@ button:hover{
 .result strong{
   display:block;
   font-size:28px;
-  margin-bottom:12px;
+  margin-bottom:10px;
+  line-height:1.4;
 }
 
 .result span{
@@ -143,7 +152,7 @@ button:hover{
 
 .info{
   max-width:850px;
-  margin:0 auto 70px;
+  margin:0 auto 30px;
   background:#fff;
   border:1px solid var(--border);
   border-radius:18px;
@@ -154,9 +163,48 @@ button:hover{
   margin-top:0;
 }
 
+.info h3{
+  margin-top:28px;
+  margin-bottom:8px;
+}
+
 .info p{
   color:var(--muted);
   line-height:1.7;
+}
+
+.faq{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.faq h2{
+  margin-top:0;
+}
+
+.faq details{
+  border-bottom:1px solid var(--border);
+  padding:18px 0;
+}
+
+.faq details:last-child{
+  border-bottom:0;
+}
+
+.faq summary{
+  cursor:pointer;
+  font-weight:700;
+  line-height:1.5;
+}
+
+.faq p{
+  color:var(--muted);
+  line-height:1.7;
+  margin:12px 0 0;
 }
 
 footer{
@@ -168,6 +216,7 @@ footer{
 }
 
 @media(max-width:700px){
+
   .calculator{
     margin:20px 15px 45px;
     padding:22px;
@@ -177,8 +226,10 @@ footer{
     padding-top:45px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  .info,
+  .faq{
+    margin-left:15px;
+    margin-right:15px;
   }
 }
 </style>
@@ -197,7 +248,7 @@ footer{
 
 <section class="hero">
   <h1>Fuel Cost Calculator</h1>
-  <p>Estimate your fuel consumption and travel cost using distance, vehicle mileage and fuel price.</p>
+  <p>Estimate how much fuel your trip will require and calculate the approximate cost using your distance, mileage and fuel price.</p>
 </section>
 
 <div class="calculator">
@@ -238,7 +289,7 @@ footer{
     step="any"
   >
 
-  <button onclick="calculateFuelCost()">
+  <button onclick="calculateFuelCost()" type="button">
     Calculate Fuel Cost
   </button>
 
@@ -254,15 +305,92 @@ footer{
   <h2>How the fuel cost calculator works</h2>
 
   <p>
-    Enter the distance you plan to travel, your vehicle's mileage and the
-    current fuel price. The calculator estimates how many litres of fuel
-    the trip will require and the approximate fuel cost.
+    Enter the distance of your trip, your vehicle's average mileage and the
+    current fuel price per litre. The calculator estimates the amount of
+    fuel required and the approximate cost of the trip.
   </p>
 
   <p>
-    For example, a 300 km trip in a vehicle that gives 15 km per litre
-    requires approximately 20 litres of fuel.
+    Fuel required is calculated by dividing the distance by the vehicle's
+    mileage. The estimated fuel cost is then calculated by multiplying the
+    fuel required by the price per litre.
   </p>
+
+  <h3>Example fuel cost calculation</h3>
+
+  <p>
+    If you travel 300 km in a vehicle that averages 15 km per litre, the
+    trip would require approximately 20 litres of fuel. At ₹100 per litre,
+    the estimated fuel cost would be ₹2,000.
+  </p>
+
+  <h3>What affects actual fuel consumption?</h3>
+
+  <p>
+    Actual fuel consumption can vary because of traffic, driving speed,
+    road conditions, vehicle load, tyre pressure, weather and driving
+    habits. This calculator provides an estimate based on the mileage
+    you enter.
+  </p>
+
+</section>
+
+<section class="faq">
+
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>How do I calculate fuel cost for a trip?</summary>
+    <p>
+      Enter your trip distance, vehicle mileage and fuel price. The
+      calculator divides the distance by mileage to estimate fuel required,
+      then multiplies that amount by the fuel price.
+    </p>
+  </details>
+
+  <details>
+    <summary>How much fuel will my trip require?</summary>
+    <p>
+      Estimated fuel required is calculated by dividing the trip distance
+      by your vehicle's mileage. For example, 450 km at 15 km/l requires
+      approximately 30 litres of fuel.
+    </p>
+  </details>
+
+  <details>
+    <summary>What does km/l mean?</summary>
+    <p>
+      km/l means kilometres per litre. It describes how many kilometres
+      a vehicle can travel using one litre of fuel. A higher km/l figure
+      generally means better fuel efficiency.
+    </p>
+  </details>
+
+  <details>
+    <summary>Can I use this calculator for a round trip?</summary>
+    <p>
+      Yes. Enter the total distance for the complete journey. For a
+      round trip, you can multiply the one-way distance by two before
+      entering it into the calculator.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does the calculator include tolls or other travel costs?</summary>
+    <p>
+      No. The calculator estimates fuel cost only. Tolls, parking,
+      maintenance and other travel expenses are not included.
+    </p>
+  </details>
+
+  <details>
+    <summary>Why can my actual fuel cost be different?</summary>
+    <p>
+      Your actual fuel consumption may differ from the stated mileage because
+      of traffic, speed, road conditions, vehicle load, weather and driving
+      style. Changes in fuel prices will also affect the final cost.
+    </p>
+  </details>
 
 </section>
 
@@ -294,20 +422,19 @@ function calculateFuelCost(){
     isNaN(distance) ||
     isNaN(mileage) ||
     isNaN(fuelPrice) ||
-    distance < 0 ||
+    distance <= 0 ||
     mileage <= 0 ||
     fuelPrice < 0
   ){
 
     result.innerHTML =
       "<strong>Enter valid values</strong>" +
-      "<span>Please enter valid distance, mileage and fuel price.</span>";
+      "<span>Please enter a valid distance, mileage and fuel price.</span>";
 
     return;
   }
 
   const fuelRequired = distance / mileage;
-
   const fuelCost = fuelRequired * fuelPrice;
 
   result.innerHTML =
