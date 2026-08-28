@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Free date difference calculator. Calculate the exact difference between two dates in years, months, days and total days.">
+<meta name="description" content="Free date difference calculator. Calculate the exact time between two dates in years, months and days, plus the total number of days.">
 
-<title>Date Difference Calculator – Calculate Days Between Dates</title>
+<title>Date Difference Calculator – Calculate Days Between Two Dates</title>
 
 <style>
 :root{
@@ -28,7 +28,10 @@ body{
   color:var(--text);
 }
 
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 header{
   background:#fff;
@@ -104,6 +107,11 @@ input{
   background:#fff;
 }
 
+input:focus{
+  outline:2px solid #b9d0ff;
+  outline-offset:1px;
+}
+
 button{
   width:100%;
   border:0;
@@ -133,6 +141,7 @@ button:hover{
   display:block;
   font-size:27px;
   margin-bottom:10px;
+  line-height:1.4;
 }
 
 .result span{
@@ -143,7 +152,7 @@ button:hover{
 
 .info{
   max-width:850px;
-  margin:0 auto 70px;
+  margin:0 auto 30px;
   background:#fff;
   border:1px solid var(--border);
   border-radius:18px;
@@ -154,9 +163,48 @@ button:hover{
   margin-top:0;
 }
 
+.info h3{
+  margin-top:28px;
+  margin-bottom:8px;
+}
+
 .info p{
   color:var(--muted);
   line-height:1.7;
+}
+
+.faq{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.faq h2{
+  margin-top:0;
+}
+
+.faq details{
+  border-bottom:1px solid var(--border);
+  padding:18px 0;
+}
+
+.faq details:last-child{
+  border-bottom:0;
+}
+
+.faq summary{
+  cursor:pointer;
+  font-weight:700;
+  line-height:1.5;
+}
+
+.faq p{
+  color:var(--muted);
+  line-height:1.7;
+  margin:12px 0 0;
 }
 
 footer{
@@ -168,6 +216,7 @@ footer{
 }
 
 @media(max-width:700px){
+
   .calculator{
     margin:20px 15px 45px;
     padding:22px;
@@ -177,8 +226,10 @@ footer{
     padding-top:45px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  .info,
+  .faq{
+    margin-left:15px;
+    margin-right:15px;
   }
 }
 </style>
@@ -197,7 +248,7 @@ footer{
 
 <section class="hero">
   <h1>Date Difference Calculator</h1>
-  <p>Calculate the difference between two dates in years, months, days and total days.</p>
+  <p>Calculate the exact difference between two dates in years, months and days, plus the total number of days.</p>
 </section>
 
 <div class="calculator">
@@ -216,7 +267,7 @@ footer{
     id="endDate"
   >
 
-  <button onclick="calculateDifference()">
+  <button onclick="calculateDifference()" type="button">
     Calculate Difference
   </button>
 
@@ -232,15 +283,83 @@ footer{
   <h2>How the date difference calculator works</h2>
 
   <p>
-    Enter a start date and an end date to calculate the time between them.
-    The calculator shows the difference in complete years, months and days,
-    as well as the total number of days between the dates.
+    Enter a start date and an end date to calculate the amount of time
+    between them. The calculator shows the difference in complete years,
+    months and days as well as the total number of days.
   </p>
 
   <p>
     The calculation uses calendar dates and accounts for different month
-    lengths and leap years.
+    lengths and leap years. If the dates are entered in reverse order,
+    the calculator automatically calculates the difference between them.
   </p>
+
+  <h3>What is the difference between calendar time and total days?</h3>
+
+  <p>
+    A calendar difference expresses the result using years, months and
+    days. Total days gives the elapsed number of complete 24-hour calendar
+    days between the two dates. Because months have different lengths,
+    these two ways of expressing a date difference are not interchangeable.
+  </p>
+
+</section>
+
+<section class="faq">
+
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>How do I calculate the difference between two dates?</summary>
+    <p>
+      Select a start date and an end date, then click
+      <strong>Calculate Difference</strong>. The calculator will show the
+      difference in years, months and days along with the total number of
+      days.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does the calculator account for leap years?</summary>
+    <p>
+      Yes. The calculation uses actual calendar dates, including the
+      different lengths of months and leap years.
+    </p>
+  </details>
+
+  <details>
+    <summary>What happens if I enter the dates in the wrong order?</summary>
+    <p>
+      The calculator automatically switches the dates internally and
+      calculates the difference between them, so the earlier date does
+      not have to be entered first.
+    </p>
+  </details>
+
+  <details>
+    <summary>Can I calculate the number of days between two dates?</summary>
+    <p>
+      Yes. The result includes the total number of days between the selected
+      dates in addition to the calendar difference in years, months and days.
+    </p>
+  </details>
+
+  <details>
+    <summary>Are the start and end dates included in the calculation?</summary>
+    <p>
+      The total-day calculation measures the elapsed calendar-day difference
+      between the two dates. For example, two consecutive dates have a
+      difference of one day.
+    </p>
+  </details>
+
+  <details>
+    <summary>Can I use this calculator for dates in the past or future?</summary>
+    <p>
+      Yes. You can select dates in the past or future. The calculator simply
+      determines the calendar difference between the two dates you provide.
+    </p>
+  </details>
 
 </section>
 
