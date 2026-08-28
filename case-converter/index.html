@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Free online case converter. Convert text to uppercase, lowercase, title case, sentence case and more.">
+<meta name="description" content="Free online case converter. Convert text to uppercase, lowercase, title case, sentence case and alternating case instantly.">
 
-<title>Case Converter – Uppercase, Lowercase & Title Case</title>
+<title>Case Converter – Uppercase, Lowercase, Title Case & More</title>
 
 <style>
 :root{
@@ -28,7 +28,10 @@ body{
   color:var(--text);
 }
 
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 header{
   background:#fff;
@@ -74,7 +77,7 @@ header{
   color:var(--muted);
   font-size:18px;
   margin:0 auto;
-  max-width:700px;
+  max-width:720px;
   line-height:1.6;
 }
 
@@ -136,7 +139,7 @@ button:hover{
 
 .info{
   max-width:850px;
-  margin:0 auto 70px;
+  margin:0 auto 30px;
   background:#fff;
   border:1px solid var(--border);
   border-radius:18px;
@@ -147,9 +150,48 @@ button:hover{
   margin-top:0;
 }
 
+.info h3{
+  margin-top:28px;
+  margin-bottom:8px;
+}
+
 .info p{
   color:var(--muted);
   line-height:1.7;
+}
+
+.faq{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.faq h2{
+  margin-top:0;
+}
+
+.faq details{
+  border-bottom:1px solid var(--border);
+  padding:18px 0;
+}
+
+.faq details:last-child{
+  border-bottom:0;
+}
+
+.faq summary{
+  cursor:pointer;
+  font-weight:700;
+  line-height:1.5;
+}
+
+.faq p{
+  color:var(--muted);
+  line-height:1.7;
+  margin:12px 0 0;
 }
 
 footer{
@@ -171,14 +213,15 @@ footer{
     padding-top:45px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  .info,
+  .faq{
+    margin-left:15px;
+    margin-right:15px;
   }
 
   .buttons{
     grid-template-columns:repeat(2,1fr);
   }
-
 }
 
 @media(max-width:420px){
@@ -186,7 +229,6 @@ footer{
   .buttons{
     grid-template-columns:1fr;
   }
-
 }
 </style>
 </head>
@@ -204,7 +246,7 @@ footer{
 
 <section class="hero">
   <h1>Case Converter</h1>
-  <p>Convert text to uppercase, lowercase, title case, sentence case and more.</p>
+  <p>Convert text to uppercase, lowercase, title case, sentence case and alternating case instantly.</p>
 </section>
 
 <div class="calculator">
@@ -217,31 +259,31 @@ footer{
 
   <div class="buttons">
 
-    <button onclick="toUpperCaseText()">
+    <button onclick="toUpperCaseText()" type="button">
       UPPERCASE
     </button>
 
-    <button onclick="toLowerCaseText()">
+    <button onclick="toLowerCaseText()" type="button">
       lowercase
     </button>
 
-    <button onclick="toTitleCase()">
+    <button onclick="toTitleCase()" type="button">
       Title Case
     </button>
 
-    <button onclick="toSentenceCase()">
+    <button onclick="toSentenceCase()" type="button">
       Sentence case
     </button>
 
-    <button onclick="toAlternatingCase()">
+    <button onclick="toAlternatingCase()" type="button">
       aLtErNaTiNg
     </button>
 
-    <button onclick="copyText()">
+    <button onclick="copyText()" type="button">
       Copy Text
     </button>
 
-    <button class="secondary" onclick="clearText()">
+    <button class="secondary" onclick="clearText()" type="button">
       Clear
     </button>
 
@@ -255,9 +297,106 @@ footer{
 
   <p>
     A case converter changes the capitalization of text without requiring
-    you to retype it. You can convert text to uppercase, lowercase,
-    title case, sentence case or alternating capitalization with one click.
+    you to manually retype it. This can be useful when editing documents,
+    preparing text for websites, formatting headings or cleaning up copied
+    text.
   </p>
+
+  <p>
+    UtilityTools lets you quickly convert text into several common formats,
+    including uppercase, lowercase, title case, sentence case and
+    alternating case.
+  </p>
+
+  <h3>Available text cases</h3>
+
+  <p>
+    <strong>Uppercase:</strong> Converts every letter to capital letters.
+  </p>
+
+  <p>
+    <strong>Lowercase:</strong> Converts every letter to lowercase.
+  </p>
+
+  <p>
+    <strong>Title Case:</strong> Capitalizes the first letter of words.
+  </p>
+
+  <p>
+    <strong>Sentence Case:</strong> Capitalizes the beginning of sentences.
+  </p>
+
+  <p>
+    <strong>Alternating Case:</strong> Alternates uppercase and lowercase
+    letters throughout the text.
+  </p>
+
+</section>
+
+<section class="faq">
+
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>What is a case converter?</summary>
+    <p>
+      A case converter is a tool that changes the capitalization of existing
+      text. It can convert text between uppercase, lowercase, title case,
+      sentence case and other capitalization formats.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I convert text to uppercase?</summary>
+    <p>
+      Paste or type your text into the text box and click the
+      <strong>UPPERCASE</strong> button. All letters will be converted to
+      capital letters.
+    </p>
+  </details>
+
+  <details>
+    <summary>How do I convert text to lowercase?</summary>
+    <p>
+      Enter your text and click the <strong>lowercase</strong> button.
+      The letters will be converted to lowercase while the rest of the
+      text remains in place.
+    </p>
+  </details>
+
+  <details>
+    <summary>What is Title Case?</summary>
+    <p>
+      Title Case capitalizes the first letter of words. It is commonly used
+      for headings, titles and other text where words are presented with
+      initial capital letters.
+    </p>
+  </details>
+
+  <details>
+    <summary>What is Sentence Case?</summary>
+    <p>
+      Sentence case generally uses a capital letter at the beginning of a
+      sentence while converting other letters to lowercase.
+    </p>
+  </details>
+
+  <details>
+    <summary>Can I copy the converted text?</summary>
+    <p>
+      Yes. After converting your text, click <strong>Copy Text</strong> to
+      copy the result to your clipboard.
+    </p>
+  </details>
+
+  <details>
+    <summary>Is my text uploaded or stored?</summary>
+    <p>
+      The case conversion is performed directly in your browser using
+      JavaScript. The tool does not need to send your text to a server
+      to perform the conversion.
+    </p>
+  </details>
 
 </section>
 
@@ -308,7 +447,7 @@ function toAlternatingCase(){
   let result = "";
   let upper = true;
 
-  for(let char of text){
+  for(const char of text){
 
     if(/[a-zA-Z]/.test(char)){
 
@@ -330,22 +469,29 @@ function toAlternatingCase(){
 
 }
 
-function copyText(){
+async function copyText(){
 
   if(!textBox.value){
-
     return;
-
   }
 
-  navigator.clipboard.writeText(textBox.value);
+  try{
+
+    await navigator.clipboard.writeText(textBox.value);
+
+  }catch(error){
+
+    textBox.select();
+    document.execCommand("copy");
+    textBox.setSelectionRange(0,0);
+
+  }
 
 }
 
 function clearText(){
 
   textBox.value = "";
-
   textBox.focus();
 
 }
