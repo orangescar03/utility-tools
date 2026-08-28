@@ -1,184 +1,374 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="description" content="Free simple interest calculator. Calculate simple interest, total interest earned and final amount quickly.">
+<meta name="description" content="Free simple interest calculator. Calculate simple interest, total interest, and final amount from your principal, interest rate, and time.">
 
-<title>Simple Interest Calculator – Calculate Interest & Total Amount</title>
+<meta name="google-site-verification" content="QxPjoJB8AlcNWDkujc1nF5abSkH8GgDbswVTqJ_wzo0">
+
+<title>Simple Interest Calculator - Calculate Interest & Total Amount | Utility Tools</title>
 
 <style>
 :root{
   --bg:#f7f9fc;
   --card:#fff;
   --text:#172033;
-  --muted:#60708a;
-  --blue:#2864dc;
-  --blue-light:#edf4ff;
-  --border:#e1e6ef;
+  --muted:#667085;
+  --line:#e5e7eb;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
 }
 
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
+  line-height:1.6;
 }
 
-a{text-decoration:none;color:inherit}
-
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
+a{
+  text-decoration:none;
+  color:inherit;
 }
 
 .wrap{
-  max-width:1200px;
+  width:calc(100% - 24px);
+  max-width:900px;
   margin:auto;
-  padding:0 24px;
+}
+
+/* HEADER */
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .nav{
-  height:72px;
+  min-height:64px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-  font-size:21px;
+  font-size:19px;
   font-weight:800;
+}
+
+.logo span{
   color:var(--blue);
 }
 
 .back{
   color:var(--muted);
+  font-size:14px;
   font-weight:600;
 }
 
+/* HERO */
+
 .hero{
   text-align:center;
-  padding:65px 20px 35px;
+  padding:48px 0 30px;
 }
 
-.hero h1{
-  font-size:clamp(36px,6vw,58px);
-  margin:0 0 16px;
-  line-height:1.1;
+.tag{
+  display:inline-block;
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+h1{
+  margin:0 auto 12px;
+  font-size:clamp(34px,6vw,52px);
+  line-height:1.08;
+  letter-spacing:-2px;
 }
 
 .hero p{
-  color:var(--muted);
-  font-size:18px;
+  max-width:680px;
   margin:0 auto;
-  max-width:720px;
-  line-height:1.6;
+  color:var(--muted);
+  font-size:17px;
 }
 
+/* CALCULATOR */
+
 .calculator{
-  max-width:650px;
-  margin:25px auto 60px;
   background:var(--card);
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:32px;
-  box-shadow:0 8px 30px rgba(20,40,80,.06);
+  padding:25px;
+  margin:10px auto 45px;
+  box-shadow:0 4px 20px rgba(16,24,40,.04);
 }
 
 label{
   display:block;
+  margin-bottom:7px;
+  font-size:14px;
   font-weight:700;
-  margin-bottom:9px;
 }
 
 input{
   width:100%;
-  padding:15px;
-  border:1px solid #ccd4e0;
+  height:48px;
+  padding:0 14px;
+  margin-bottom:16px;
+  border:1px solid #d0d5dd;
   border-radius:10px;
-  font-size:17px;
-  margin-bottom:20px;
   background:#fff;
+  font-size:16px;
+  outline:none;
 }
 
-button{
+input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+
+.calculate{
   width:100%;
+  height:48px;
   border:0;
   border-radius:10px;
-  padding:15px;
   background:var(--blue);
   color:#fff;
-  font-size:17px;
+  font-size:15px;
   font-weight:700;
   cursor:pointer;
 }
 
-button:hover{
-  opacity:.92;
+.calculate:hover{
+  opacity:.94;
 }
 
 .result{
-  margin-top:20px;
-  padding:22px;
+  margin-top:15px;
+  padding:17px;
+  border-radius:11px;
   background:var(--blue-light);
-  border-radius:12px;
-  color:#174da8;
+  color:var(--text);
   text-align:center;
 }
 
 .result strong{
   display:block;
-  font-size:28px;
-  margin-bottom:12px;
+  font-size:25px;
+  margin-bottom:4px;
 }
 
 .result span{
   display:block;
   color:var(--muted);
+  font-size:14px;
   line-height:1.8;
 }
 
-.info{
-  max-width:850px;
-  margin:0 auto 70px;
+/* CONTENT */
+
+.content{
+  padding-bottom:45px;
+}
+
+.content-section{
   background:#fff;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:30px;
+  padding:25px;
+  margin-bottom:16px;
 }
 
-.info h2{
-  margin-top:0;
+.content-section h2{
+  margin:0 0 12px;
+  font-size:24px;
+  letter-spacing:-.5px;
 }
 
-.info p{
+.content-section h3{
+  margin:22px 0 7px;
+  font-size:18px;
+}
+
+.content-section p{
+  margin:0 0 13px;
+  color:#475467;
+}
+
+.formula{
+  padding:14px;
+  margin:14px 0;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#f8fafc;
+  text-align:center;
+  font-weight:700;
+  overflow-wrap:anywhere;
+}
+
+/* EXAMPLES */
+
+.example{
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+
+.example:first-of-type{
+  border-top:0;
+}
+
+.example strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* FAQ */
+
+.faq{
+  border-top:1px solid var(--line);
+}
+
+.faq:first-of-type{
+  border-top:0;
+}
+
+.faq button{
+  width:100%;
+  height:auto;
+  margin:0;
+  padding:16px 0;
+  border:0;
+  border-radius:0;
+  background:none;
+  color:var(--text);
+  text-align:left;
+  font-size:15px;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.faq button span:last-child{
   color:var(--muted);
-  line-height:1.7;
+  font-size:19px;
+  flex-shrink:0;
+  margin-left:15px;
 }
+
+.answer{
+  display:none;
+  padding:0 0 16px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.faq.open .answer{
+  display:block;
+}
+
+/* RELATED */
+
+.related{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.related a{
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:14px;
+  border-radius:11px;
+  text-align:center;
+  font-size:14px;
+  font-weight:700;
+}
+
+.related a:hover{
+  background:#dbeafe;
+}
+
+/* FOOTER */
 
 footer{
   background:#fff;
-  border-top:1px solid var(--border);
-  padding:30px;
-  text-align:center;
+  border-top:1px solid var(--line);
+  padding:28px 0;
   color:var(--muted);
+  font-size:13px;
 }
 
+.foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.links a:hover{
+  color:var(--blue);
+}
+
+/* MOBILE */
+
 @media(max-width:700px){
-  .calculator{
-    margin:20px 15px 45px;
-    padding:22px;
-  }
 
   .hero{
-    padding-top:45px;
+    padding:40px 0 25px;
   }
 
-  .info{
-    margin:0 15px 45px;
+  h1{
+    font-size:36px;
+    letter-spacing:-1.5px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .calculator,
+  .content-section{
+    padding:20px;
+    border-radius:15px;
+  }
+
+  .related{
+    grid-template-columns:1fr;
+  }
+
+  .foot{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .links{
+    gap:12px;
   }
 }
 </style>
@@ -187,18 +377,47 @@ footer{
 <body>
 
 <header>
-  <div class="wrap nav">
-    <a href="../" class="logo">UtilityTools</a>
-    <a href="../" class="back">← All tools</a>
-  </div>
+
+<div class="wrap nav">
+
+  <a href="../" class="logo">
+    Utility<span>Tools</span>
+  </a>
+
+  <a href="../" class="back">
+    ← All tools
+  </a>
+
+</div>
+
 </header>
+
 
 <main>
 
 <section class="hero">
+
+<div class="wrap">
+
+  <div class="tag">
+    Free • Fast • No sign-up
+  </div>
+
   <h1>Simple Interest Calculator</h1>
-  <p>Calculate simple interest and the total amount from your principal, rate and time.</p>
+
+  <p>
+    Calculate simple interest and the total amount from your principal,
+    interest rate, and investment period.
+  </p>
+
+</div>
+
 </section>
+
+
+<section>
+
+<div class="wrap">
 
 <div class="calculator">
 
@@ -212,7 +431,9 @@ footer{
     placeholder="e.g. 100000"
     min="0"
     step="any"
+    inputmode="decimal"
   >
+
 
   <label for="rate">
     Annual interest rate (%)
@@ -224,7 +445,9 @@ footer{
     placeholder="e.g. 8"
     min="0"
     step="any"
+    inputmode="decimal"
   >
+
 
   <label for="time">
     Time (years)
@@ -236,63 +459,298 @@ footer{
     placeholder="e.g. 5"
     min="0"
     step="any"
+    inputmode="decimal"
   >
 
-  <button onclick="calculateInterest()">
+
+  <button
+    class="calculate"
+    onclick="calculateInterest()">
     Calculate Interest
   </button>
 
+
   <div class="result" id="result">
+
     <strong>Your result</strong>
-    <span>Enter your principal, interest rate and time above.</span>
+
+    <span>
+      Enter your principal, interest rate, and time above.
+    </span>
+
   </div>
 
 </div>
 
-<section class="info">
+</div>
+
+</section>
+
+
+<section class="content">
+
+<div class="wrap">
+
+
+<!-- HOW IT WORKS -->
+
+<div class="content-section">
 
   <h2>How simple interest is calculated</h2>
 
   <p>
     Simple interest is calculated only on the original principal amount.
-    The standard formula is: Simple Interest = Principal × Rate × Time ÷ 100.
+    Unlike compound interest, previously earned interest is not added
+    to the principal when calculating future interest.
+  </p>
+
+  <h3>Simple interest formula</h3>
+
+  <div class="formula">
+    Simple Interest = Principal × Rate × Time ÷ 100
+  </div>
+
+  <p>
+    The rate is expressed as an annual percentage and the time is
+    expressed in years.
+  </p>
+
+  <h3>Total amount</h3>
+
+  <div class="formula">
+    Total Amount = Principal + Simple Interest
+  </div>
+
+</div>
+
+
+<!-- EXAMPLES -->
+
+<div class="content-section">
+
+  <h2>Simple interest examples</h2>
+
+  <div class="example">
+
+    <strong>₹1,00,000 at 8% for 5 years</strong>
+
+    <p>
+      Enter ₹1,00,000 as the principal, 8% as the annual interest
+      rate, and 5 years as the time period. The calculator will
+      determine the simple interest and total amount.
+    </p>
+
+  </div>
+
+
+  <div class="example">
+
+    <strong>₹50,000 at 10% for 3 years</strong>
+
+    <p>
+      The simple interest depends directly on the principal, annual
+      rate, and length of the investment or loan period.
+    </p>
+
+  </div>
+
+
+  <div class="example">
+
+    <strong>0% interest</strong>
+
+    <p>
+      If the interest rate is 0%, no interest is earned or charged,
+      so the total amount remains equal to the principal.
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- SIMPLE VS COMPOUND -->
+
+<div class="content-section">
+
+  <h2>Simple interest vs compound interest</h2>
+
+  <p>
+    With simple interest, interest is calculated only on the original
+    principal. With compound interest, previously accumulated interest
+    can also contribute to future interest calculations.
   </p>
 
   <p>
-    The total amount is the original principal plus the simple interest
-    earned over the selected period.
+    This makes simple interest calculations straightforward and useful
+    for situations where interest does not compound.
   </p>
+
+</div>
+
+
+<!-- FAQ -->
+
+<div class="content-section">
+
+  <h2>Frequently asked questions</h2>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>What is simple interest?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      Simple interest is interest calculated on the original principal
+      amount without adding previously earned interest to the principal.
+    </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>What is the simple interest formula?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      The standard formula is Simple Interest = Principal × Rate × Time ÷ 100,
+      when the annual rate is expressed as a percentage and time is measured
+      in years.
+    </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>What is the difference between simple and compound interest?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      Simple interest is calculated on the original principal, while
+      compound interest also accounts for interest accumulated during
+      previous periods.
+    </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+      <span>What happens when the interest rate is 0%?</span>
+      <span>+</span>
+    </button>
+
+    <div class="answer">
+      No interest is added when the rate is 0%, so the final amount
+      remains equal to the original principal.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- RELATED -->
+
+<div class="content-section">
+
+  <h2>Related calculators</h2>
+
+  <div class="related">
+
+    <a href="../compound-interest/">
+      Compound Interest
+    </a>
+
+    <a href="../emi-calculator/">
+      EMI Calculator
+    </a>
+
+    <a href="../sip-calculator/">
+      SIP Calculator
+    </a>
+
+  </div>
+
+</div>
+
+</div>
 
 </section>
 
 </main>
 
+
 <footer>
-  © 2026 UtilityTools
+
+<div class="wrap foot">
+
+  <div>
+    © 2026 Utility Tools
+  </div>
+
+  <div class="links">
+
+    <a href="../about/">
+      About
+    </a>
+
+    <a href="../privacy-policy/">
+      Privacy
+    </a>
+
+    <a href="../terms/">
+      Terms
+    </a>
+
+    <a href="../contact/">
+      Contact
+    </a>
+
+  </div>
+
+</div>
+
 </footer>
+
 
 <script>
 
 function calculateInterest(){
 
-  const principal = parseFloat(
-    document.getElementById("principal").value
-  );
+  const principal =
+    parseFloat(
+      document.getElementById("principal").value
+    );
 
-  const rate = parseFloat(
-    document.getElementById("rate").value
-  );
+  const rate =
+    parseFloat(
+      document.getElementById("rate").value
+    );
 
-  const time = parseFloat(
-    document.getElementById("time").value
-  );
+  const time =
+    parseFloat(
+      document.getElementById("time").value
+    );
 
-  const result = document.getElementById("result");
+  const result =
+    document.getElementById("result");
+
 
   if(
-    isNaN(principal) ||
-    isNaN(rate) ||
-    isNaN(time) ||
+    !Number.isFinite(principal) ||
+    !Number.isFinite(rate) ||
+    !Number.isFinite(time) ||
     principal < 0 ||
     rate < 0 ||
     time < 0
@@ -300,27 +758,39 @@ function calculateInterest(){
 
     result.innerHTML =
       "<strong>Enter valid values</strong>" +
-      "<span>Please enter valid principal, interest rate and time values.</span>";
+      "<span>Please enter valid principal, interest rate, and time values.</span>";
 
     return;
   }
 
-  const interest = principal * rate * time / 100;
 
-  const totalAmount = principal + interest;
+  const interest =
+    principal * rate * time / 100;
+
+
+  const totalAmount =
+    principal + interest;
+
 
   result.innerHTML =
     "<strong>Simple interest: " +
     formatCurrency(interest) +
     "</strong>" +
+
     "<span>" +
+
     "Principal: " +
     formatCurrency(principal) +
+
     "<br>" +
+
     "Total amount: " +
     formatCurrency(totalAmount) +
+
     "</span>";
+
 }
+
 
 function formatCurrency(number){
 
@@ -329,6 +799,47 @@ function formatCurrency(number){
     currency:"INR",
     maximumFractionDigits:2
   });
+
+}
+
+
+function toggleFaq(button){
+
+  const faq =
+    button.parentElement;
+
+  const isOpen =
+    faq.classList.contains("open");
+
+
+  document
+    .querySelectorAll(".faq")
+    .forEach(item => {
+
+      item.classList.remove("open");
+
+      const symbol =
+        item.querySelector("button span:last-child");
+
+      if(symbol){
+        symbol.textContent = "+";
+      }
+
+    });
+
+
+  if(!isOpen){
+
+    faq.classList.add("open");
+
+    const symbol =
+      button.querySelector("span:last-child");
+
+    if(symbol){
+      symbol.textContent = "−";
+    }
+
+  }
 
 }
 
