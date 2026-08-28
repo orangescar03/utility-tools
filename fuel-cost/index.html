@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Free fuel cost calculator. Calculate fuel consumption and estimated travel cost using distance, mileage and fuel price.">
+
+<title>Fuel Cost Calculator – Calculate Trip Fuel Cost</title>
+
+<style>
+:root{
+  --bg:#f7f9fc;
+  --card:#fff;
+  --text:#172033;
+  --muted:#60708a;
+  --blue:#2864dc;
+  --blue-light:#edf4ff;
+  --border:#e1e6ef;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{text-decoration:none;color:inherit}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+}
+
+.nav{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.back{
+  color:var(--muted);
+  font-weight:600;
+}
+
+.hero{
+  text-align:center;
+  padding:65px 20px 35px;
+}
+
+.hero h1{
+  font-size:clamp(36px,6vw,58px);
+  margin:0 0 16px;
+  line-height:1.1;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  margin:0 auto;
+  max-width:720px;
+  line-height:1.6;
+}
+
+.calculator{
+  max-width:650px;
+  margin:25px auto 60px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 8px 30px rgba(20,40,80,.06);
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-bottom:9px;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  border:1px solid #ccd4e0;
+  border-radius:10px;
+  font-size:17px;
+  margin-bottom:20px;
+  background:#fff;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:15px;
+  background:var(--blue);
+  color:#fff;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.92;
+}
+
+.result{
+  margin-top:20px;
+  padding:22px;
+  background:var(--blue-light);
+  border-radius:12px;
+  color:#174da8;
+  text-align:center;
+}
+
+.result strong{
+  display:block;
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.result span{
+  display:block;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.info{
+  max-width:850px;
+  margin:0 auto 70px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px;
+}
+
+.info h2{
+  margin-top:0;
+}
+
+.info p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+footer{
+  background:#fff;
+  border-top:1px solid var(--border);
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+@media(max-width:700px){
+  .calculator{
+    margin:20px 15px 45px;
+    padding:22px;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+
+  .info{
+    margin:0 15px 45px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="../" class="logo">UtilityTools</a>
+    <a href="../" class="back">← All tools</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <h1>Fuel Cost Calculator</h1>
+  <p>Estimate your fuel consumption and travel cost using distance, vehicle mileage and fuel price.</p>
+</section>
+
+<div class="calculator">
+
+  <label for="distance">
+    Distance (km)
+  </label>
+
+  <input
+    type="number"
+    id="distance"
+    placeholder="e.g. 500"
+    min="0"
+    step="any"
+  >
+
+  <label for="mileage">
+    Vehicle mileage (km/l)
+  </label>
+
+  <input
+    type="number"
+    id="mileage"
+    placeholder="e.g. 15"
+    min="0.01"
+    step="any"
+  >
+
+  <label for="fuelPrice">
+    Fuel price (₹/litre)
+  </label>
+
+  <input
+    type="number"
+    id="fuelPrice"
+    placeholder="e.g. 100"
+    min="0"
+    step="any"
+  >
+
+  <button onclick="calculateFuelCost()">
+    Calculate Fuel Cost
+  </button>
+
+  <div class="result" id="result">
+    <strong>Your result</strong>
+    <span>Enter your trip details above.</span>
+  </div>
+
+</div>
+
+<section class="info">
+
+  <h2>How the fuel cost calculator works</h2>
+
+  <p>
+    Enter the distance you plan to travel, your vehicle's mileage and the
+    current fuel price. The calculator estimates how many litres of fuel
+    the trip will require and the approximate fuel cost.
+  </p>
+
+  <p>
+    For example, a 300 km trip in a vehicle that gives 15 km per litre
+    requires approximately 20 litres of fuel.
+  </p>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 UtilityTools
+</footer>
+
+<script>
+
+function calculateFuelCost(){
+
+  const distance = parseFloat(
+    document.getElementById("distance").value
+  );
+
+  const mileage = parseFloat(
+    document.getElementById("mileage").value
+  );
+
+  const fuelPrice = parseFloat(
+    document.getElementById("fuelPrice").value
+  );
+
+  const result = document.getElementById("result");
+
+  if(
+    isNaN(distance) ||
+    isNaN(mileage) ||
+    isNaN(fuelPrice) ||
+    distance < 0 ||
+    mileage <= 0 ||
+    fuelPrice < 0
+  ){
+
+    result.innerHTML =
+      "<strong>Enter valid values</strong>" +
+      "<span>Please enter valid distance, mileage and fuel price.</span>";
+
+    return;
+  }
+
+  const fuelRequired = distance / mileage;
+
+  const fuelCost = fuelRequired * fuelPrice;
+
+  result.innerHTML =
+    "<strong>Estimated cost: " +
+    formatCurrency(fuelCost) +
+    "</strong>" +
+    "<span>" +
+    "Fuel required: " +
+    fuelRequired.toFixed(2) +
+    " litres" +
+    "<br>" +
+    "Distance: " +
+    distance.toLocaleString() +
+    " km" +
+    "</span>";
+}
+
+function formatCurrency(number){
+
+  return number.toLocaleString("en-IN",{
+    style:"currency",
+    currency:"INR",
+    maximumFractionDigits:2
+  });
+
+}
+
+</script>
+
+</body>
+</html>
